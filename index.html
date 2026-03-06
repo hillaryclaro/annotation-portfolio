@@ -71,6 +71,32 @@ img {
     margin: 5px 0;
 }
 
+.button {
+    display:inline-block;
+    padding:10px 20px;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    margin-top:10px;
+}
+
+.button-blue { background-color:#2980b9; }
+.button-green { background-color:#27ae60; }
+
+.card {
+    flex: 1 1 250px;
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 </style>
 </head>
 
@@ -125,7 +151,26 @@ Frames labeled from rodeo competition videos. Annotation includes rider pose key
 Watch the annotation explanation video
 </a>
 </p>
+</div>
 
+<div class="section">
+<h2>Resume & Certificates</h2>
+
+<div class="card-container">
+<!-- Resume Card -->
+<div class="card">
+<h3>Resume</h3>
+<p>Download my resume PDF.</p>
+<a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/Resume%20Hillary%20Clarence%20Kusumo.pdf" target="_blank" class="button button-blue">View Resume</a>
+</div>
+
+<!-- Certificate Card -->
+<div class="card">
+<h3>QA Certificate</h3>
+<p>Certificate of Completion, Oct 2022.</p>
+<a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/QA_Certificate%20of%20completion_Oct_2022-13%20(2).pdf" target="_blank" class="button button-green">View Certificate</a>
+</div>
+</div>
 </div>
 
 <div class="section contact-info">
@@ -138,3 +183,23 @@ Watch the annotation explanation video
 </div>
 </body>
 </html>
+
+How to use:
+
+Replace your current index.html with this code.
+
+Make sure your screenshots are in the images folder and named example1.png, example2.png, example3.png (or update the <img> src paths).
+
+Open in a browser to see a clean, professional, and interactive portfolio.
+
+This now includes:
+
+Clean layout and styling.
+
+Project description and images.
+
+Resume & Certificate cards with clickable buttons.
+
+Contact section.
+
+I can also add a small navigation menu at the top so visitors can jump to About, Project, or Contact easily. Do you want me to do that next?
