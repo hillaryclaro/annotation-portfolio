@@ -3,268 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hillary Kusumo Portfolio</title>
+<title>Hillary Kusumo | Portfolio</title>
 <style>
-  body {
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 0;
-    transition: filter 0.3s ease;
-  }
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    width: 90%;
-    max-width: 1000px;
-    z-index: 1;
-    position: relative;
-  }
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
 
-  .card {
-    background: #222;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 5px;
+}
+
+h3 {
+    color: #2980b9;
+}
+
+p, ul {
+    margin-bottom: 15px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+a {
+    color: #2980b9;
     text-decoration: none;
-    color: #fff;
-  }
+}
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-  }
+a:hover {
+    text-decoration: underline;
+}
 
-  .thumbnail {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-  }
+.section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
 
-  .content {
+img {
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.button {
+    display:inline-block;
+    padding:10px 20px;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    margin-top:10px;
+}
+
+.button-blue { background-color:#2980b9; }
+.button-green { background-color:#27ae60; }
+
+.card {
+    flex: 1 1 250px;
+    background-color: #ecf0f1;
     padding: 15px;
-    flex: 1;
-  }
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
 
-  .content h3 {
-    margin: 0 0 10px 0;
-    font-size: 18px;
-  }
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-  .content p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  @media (max-width: 700px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-    .thumbnail {
-      height: 180px;
-    }
-  }
-
-  /* Overlay Styles */
-  .overlay {
+/* Overlay Styles */
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(17,17,17,0.95);
-    color: #fff;
+    background-color: #f4f4f9;
     overflow-y: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
+    display: none;
     z-index: 1000;
-  }
+    padding: 20px;
+}
 
-  .overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+.overlay.active {
+    display: block;
+}
 
-  .overlay .close-btn {
+.overlay .close-btn {
     position: fixed;
     top: 20px;
     right: 30px;
-    font-size: 25px;
+    font-size: 18px;
     background: #2980b9;
     border: none;
     color: #fff;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1001;
-  }
-
-  .overlay .container {
-    max-width: 900px;
-    margin: auto;
-  }
-
-  .section {
-    background-color: #222;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-  }
-
-  .overlay h1, .overlay h2, .overlay h3, .overlay p, .overlay ul {
-    color: #fff;
-  }
-
-  .overlay a {
-    color: #2980b9;
-    text-decoration: underline;
-  }
-
-  .overlay img {
-    max-width: 100%;
-    margin-bottom: 20px;
-    border-radius: 5px;
-  }
-
+}
 </style>
 </head>
 <body>
 
-<div class="grid">
-  <!-- Resume Card -->
-  <a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="card">
-    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Resume');"></div>
-    <div class="content">
-      <h3>Resume</h3>
-      <p>View my professional resume with work history, skills, and achievements.</p>
-    </div>
-  </a>
+<div class="container">
 
-  <!-- Certificate Card -->
-  <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="card">
-    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Certificate');"></div>
-    <div class="content">
-      <h3>Certificate</h3>
-      <p>Check out my professional certificate demonstrating my skills and training.</p>
-    </div>
-  </a>
+<h1>Hillary Kusumo</h1>
+<p style="text-align:center; font-size: 1.1em; font-weight: bold;">
+Data Annotator | AI Trainer | Quality Analyst | Computer Vision & NLP | GEN AI | Content Evaluation | Bounding Box | Video Tagging
+</p>
+<p style="text-align:center; font-size: 1em;">AI Data Annotation Portfolio</p>
+
+<div class="section">
+<h2>About Me</h2>
+<p>
+Data annotator with over 5 years of experience working on image, video, and text annotation projects.  
+Worked with companies such as Sama, CloudFactory, Remotask, Appen, and Micro 1.  
+Proficient in tools including CVAT, LabelImg, and custom annotation platforms.  
+Projects include autonomous driving video annotation, retail shelf labeling, agricultural drone footage segmentation, rodeo sports video annotation, and prompt reviewing for Micro 1.  
+Skilled in bounding boxes, polygon segmentation, keypoints, and quality assurance of annotated data.
+</p>
+</div>
+
+<div class="section">
+<h2>Portfolio Cards</h2>
+<div class="card-container">
 
   <!-- Annotation Card -->
   <div class="card" id="annotationCard">
-    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Annotation');"></div>
-    <div class="content">
-      <h3>Annotation</h3>
-      <p>Open full portfolio view for annotation projects.</p>
-    </div>
+    <h3>Annotation</h3>
+    <p>Click to view full annotation portfolio</p>
   </div>
 
-  <!-- Evaluation Card -->
-  <a href="#" class="card">
-    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Evaluation');"></div>
-    <div class="content">
-      <h3>Evaluation</h3>
-      <p>Example of evaluation tasks and results in annotation projects.</p>
-    </div>
-  </a>
+  <!-- Resume Card -->
+  <div class="card">
+    <h3>Resume</h3>
+    <p>Download my resume PDF.</p>
+    <a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="button button-blue">View Resume</a>
+  </div>
+
+  <!-- Certificate Card -->
+  <div class="card">
+    <h3>QA Certificate</h3>
+    <p>Certificate of Completion, Oct 2022.</p>
+    <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button button-green">View Certificate</a>
+  </div>
+
+  <!-- Example Evaluation Card -->
+  <div class="card">
+    <h3>Evaluation</h3>
+    <p>Click to view evaluation workflow</p>
+  </div>
+
+</div>
+</div>
+
+<div class="section contact-info">
+<h2>Contact</h2>
+<p>Name: Hillary Kusumo</p>
+<p>Phone: +254790931964</p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/" target="_blank">Hillary Kusumo</a></p>
+</div>
+
 </div>
 
 <!-- Overlay for Annotation -->
 <div class="overlay" id="annotationOverlay">
   <button class="close-btn" id="closeOverlay">Close</button>
   <div class="container">
-    <h1>Hillary Kusumo | Annotation Portfolio/AI Trainer</h1>
-    <p style="text-align:center; font-size: 1.1em; font-weight: bold;">
-    Data Annotator | AI Trainer | Quality Analyst | Computer Vision & NLP | GEN AI | Content Evaluation | Bounding Box | Video Tagging
+    <h2>Project: Rodeo Video Annotation</h2>
+    <p><strong>Tool:</strong> CVAT</p>
+    <p><strong>Annotation Format:</strong> COCO JSON</p>
+    <p><strong>Objects Labeled:</strong></p>
+    <ul>
+      <li>Rider</li>
+      <li>Horse</li>
+      <li>Bull</li>
+      <li>Barrel</li>
+      <li>Pickup Rider</li>
+    </ul>
+    <p><strong>Annotation Types:</strong></p>
+    <ul>
+      <li>Bounding Boxes</li>
+      <li>Keypoints</li>
+    </ul>
+    <p>Frames labeled from rodeo competition videos. Annotation includes rider pose keypoints and horse or bull body keypoints.</p>
+
+    <h3>Annotation Examples</h3>
+    <img src="Image%20Folder/0.png" alt="Screenshot 0">
+    <img src="Image%20Folder/1.png" alt="Screenshot 1">
+    <img src="Image%20Folder/2.png" alt="Screenshot 2">
+    <img src="Image%20Folder/3.png" alt="Screenshot 3">
+    <img src="Image%20Folder/4.png" alt="Screenshot 4">
+    <img src="Image%20Folder/5.png" alt="Screenshot 5">
+    <img src="Image%20Folder/6.png" alt="Screenshot 6">
+    <img src="Image%20Folder/7.png" alt="Screenshot 7">
+    <img src="Image%20Folder/8.png" alt="Screenshot 8">
+    <img src="Image%20Folder/9.png" alt="Screenshot 9">
+
+    <h3>Annotation Workflow Video</h3>
+    <p>
+      <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank">
+      Watch the annotation explanation video
+      </a>
     </p>
-    <p style="text-align:center; font-size: 1em;">AI Data Annotation Portfolio</p>
-
-    <div class="section">
-      <h2>About Me</h2>
-      <p>
-      Data annotator with over 5 years of experience on image, video, and text annotation projects.  
-      Worked with Sama, CloudFactory, Remotask, Appen, and Micro 1.  
-      Skilled in CVAT, LabelImg, and custom annotation platforms.  
-      Projects include autonomous driving, retail shelf labeling, drone footage segmentation, rodeo video annotation, and Micro 1 prompt reviewing.  
-      Proficient in bounding boxes, polygon segmentation, keypoints, and quality assurance.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Project: Rodeo Video Annotation</h2>
-      <p><strong>Tool:</strong> CVAT</p>
-      <p><strong>Annotation Format:</strong> COCO JSON</p>
-      <p><strong>Objects Labeled:</strong></p>
-      <ul>
-        <li>Rider</li>
-        <li>Horse</li>
-        <li>Bull</li>
-        <li>Barrel</li>
-        <li>Pickup Rider</li>
-      </ul>
-      <p><strong>Annotation Types:</strong></p>
-      <ul>
-        <li>Bounding Boxes</li>
-        <li>Keypoints</li>
-      </ul>
-      <p>Frames labeled from rodeo videos. Includes rider, horse, and bull body keypoints.</p>
-
-      <h3>Annotation Examples</h3>
-      <img src="Image%20Folder/0.png" alt="Screenshot 0">
-      <img src="Image%20Folder/1.png" alt="Screenshot 1">
-      <img src="Image%20Folder/2.png" alt="Screenshot 2">
-      <img src="Image%20Folder/3.png" alt="Screenshot 3">
-      <img src="Image%20Folder/4.png" alt="Screenshot 4">
-
-      <h3>Annotation Workflow Video</h3>
-      <p>
-        <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank">
-          Watch the annotation explanation video
-        </a>
-      </p>
-    </div>
   </div>
 </div>
 
-<!-- Script for Overlay -->
 <script>
-  const annotationCard = document.getElementById('annotationCard');
-  const overlay = document.getElementById('annotationOverlay');
-  const closeBtn = document.getElementById('closeOverlay');
-  const body = document.body;
+const annotationCard = document.getElementById('annotationCard');
+const overlay = document.getElementById('annotationOverlay');
+const closeBtn = document.getElementById('closeOverlay');
 
-  annotationCard.addEventListener('click', () => {
-    overlay.classList.add('active');
-    body.style.filter = 'blur(2px) brightness(0.7)';
-  });
+annotationCard.addEventListener('click', () => {
+  overlay.classList.add('active');
+});
 
-  closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', () => {
+  overlay.classList.remove('active');
+});
+
+overlay.addEventListener('click', (e) => {
+  if(e.target === overlay) {
     overlay.classList.remove('active');
-    body.style.filter = 'none';
-  });
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      overlay.classList.remove('active');
-      body.style.filter = 'none';
-    }
-  });
+  }
+});
 </script>
 
 </body>
