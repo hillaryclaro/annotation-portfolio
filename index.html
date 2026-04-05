@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hillary Clarence | Portfolio</title>
+<title>Hillary Kusumo | Portfolio</title>
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,91 +10,37 @@ body {
     padding: 0;
     background-color: #111;
     color: #f5f5f5;
-    line-height: 1.6;
-    overflow-x: hidden;
 }
 header {
     text-align: center;
     padding: 30px 20px;
     background: rgba(30,30,30,0.9);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 header h1 { font-size: 2.4rem; margin-bottom: 10px; }
-header p a {
-    color: #f5f5f5;
-    background: #333;
-    padding: 6px 14px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin: 0 5px;
-}
-header p a:hover { background: #ff6b6b; }
+header p a { color: #f5f5f5; margin: 0 5px; text-decoration: none; background:#333; padding:6px 14px; border-radius:5px;}
+header p a:hover {background:#ff6b6b;}
 
-.container { max-width: 1200px; margin: auto; padding: 20px; }
+.container { max-width: 900px; margin:auto; padding:20px; display:flex; flex-direction:column; gap:20px; }
 
-/* Card Grids */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 30px;
-}
 .card {
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 20px;
-    flex: 1 1 450px;
-    max-width: 480px;
-    cursor: pointer;
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:20px;
+    cursor:pointer;
     transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
+    overflow:hidden;
+    position:relative;
 }
-.card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.6); }
-.card h2 { color: #fff; margin-bottom: 10px; border-bottom: 2px solid #ff6b6b; padding-bottom: 5px; }
-.card p, .card ul { color: #ddd; margin-bottom: 12px; }
-.card ul { padding-left: 20px; }
-.card li::before { content: '⚡'; margin-right: 5px; color: #ff6b6b; }
-.card iframe { width: 100%; height: 250px; border-radius: 12px; border: 2px solid #222; margin-bottom: 10px; }
-.button {
-    display: inline-block;
-    background: #222;
-    color: #f5f5f5;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-top: 5px;
-    font-weight: 600;
-}
-.button:hover { background: #ff6b6b; }
+.card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.6);}
+.card h2 { border-bottom:2px solid #ff6b6b; padding-bottom:5px; margin-bottom:10px;}
+.card-content { display:none; margin-top:10px; }
 
-/* Resume & Certificate Vertical Side-by-Side */
-.card-horizontal-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: nowrap;
-    margin-bottom: 30px;
-}
-.card-horizontal-container .card {
-    flex: 1 1 400px;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-}
+.card iframe { width:100%; height:250px; border-radius:12px; margin-bottom:10px;}
+.button { display:inline-block; background:#222; color:#f5f5f5; padding:8px 14px; border-radius:6px; text-decoration:none; margin-top:5px;}
+.button:hover { background:#ff6b6b;}
+canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1; border-radius:16px; }
 
-/* Canvas overlay */
-.card canvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; border-radius:16px; }
-
-footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); color: #ccc; }
-
-@media screen and (max-width: 1000px) {
-    .card-container { flex-direction: column; align-items: center; }
-    .card-horizontal-container { flex-direction: column; align-items: center; }
-    .card, .card-horizontal-container .card { max-width: 100%; }
-}
 </style>
 </head>
 <body>
@@ -102,150 +48,105 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
 <header>
 <h1>Hillary Clarence Kusumo</h1>
 <p>
-    <a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/" target="_blank">LinkedIn</a>
-    <a href="mailto:hilarykusumo@example.com">Email</a>
+<a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/" target="_blank">LinkedIn</a>
+<a href="mailto:hilarykusumo@example.com">Email</a>
 </p>
 </header>
 
 <div class="container">
 
-<!-- Evaluation & Annotation Cards -->
-<div class="card-container">
-
-<!-- Evaluation Work -->
-<div class="card" id="evaluation-card" onclick="window.open('https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view','_blank')">
-    <canvas id="evalCanvas"></canvas>
-    <h2>Evaluation Work</h2>
-    <p>Structured evaluation of visual content using rubrics and modules for images and videos.</p>
-    <h3>Case Studies</h3>
-    <p>Video 1</p>
-    <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
-    <p>Video 2</p>
-    <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
+<!-- Card 1: Evaluation -->
+<div class="card" onclick="toggleCard(this)">
+<h2>1. Evaluation Work</h2>
+<div class="card-content">
+<p><strong>Modules:</strong> Image Review, Video Evaluation, Rubric Assessment</p>
+<p><strong>Case Studies:</strong></p>
+<ul>
+<li>Video 1: Ball disappears after hitting dome</li>
+<li>Video 2: Natural consistent break and audio</li>
+</ul>
+<p><strong>Rubric:</strong> Quality, Accuracy, Consistency</p>
+<p>Videos:</p>
+<iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
+</div>
 </div>
 
-<!-- Annotation Work -->
-<div class="card" id="annotation-card" onclick="window.open('https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view','_blank')">
-    <canvas id="annotationCanvas"></canvas>
-    <h2>Annotation Work</h2>
-    <p>Data annotation portfolio with over 5 years of experience in image, video, and text labeling projects.</p>
-    <h3>Rodeo Video Annotation</h3>
-    <p><strong>Tool:</strong> CVAT | <strong>Format:</strong> COCO JSON</p>
-    <p><strong>Objects Labeled:</strong> Rider, Horse, Bull, Barrel, Pickup Rider</p>
-    <p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints</p>
-    <h3>Annotation Examples</h3>
-    <img src="Image%20Folder/0.png" alt="Screenshot 0">
-    <img src="Image%20Folder/1.png" alt="Screenshot 1">
-    <img src="Image%20Folder/2.png" alt="Screenshot 2">
-    <h3>Annotation Workflow Video</h3>
-    <iframe src="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/preview" frameborder="0" allowfullscreen></iframe>
+<!-- Card 2: Annotation -->
+<div class="card" onclick="toggleCard(this)">
+<h2>2. Annotation Work</h2>
+<div class="card-content">
+<p><strong>Tools:</strong> CVAT</p>
+<p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints, LiDAR Cuboid</p>
+<p><strong>Objects Labeled:</strong> Cars, Traffic Signs, Pedestrians</p>
+<iframe src="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/preview" frameborder="0" allowfullscreen></iframe>
+<canvas id="annotationCanvas"></canvas>
+</div>
 </div>
 
-</div>
-
-<!-- Resume & Certificate Cards Side-by-Side Vertically -->
-<div class="card-horizontal-container">
-
+<!-- Card 3: Resume -->
 <div class="card" onclick="window.open('https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing','_blank')">
-    <h2>Resume</h2>
-    <p>Download or view my professional resume.</p>
-    <a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="button">View Resume</a>
+<h2>3. Resume</h2>
+<p>View or download my professional resume.</p>
+<a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="button">View Resume</a>
 </div>
 
+<!-- Card 4: Certificate -->
 <div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing','_blank')">
-    <h2>Certificate</h2>
-    <p>Micro 1 Certificate of Completion.</p>
-    <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button">View Certificate</a>
+<h2>4. Micro 1 Certificate</h2>
+<p>Certificate of Completion</p>
+<a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button">View Certificate</a>
 </div>
 
 </div>
 
-</div> <!-- container -->
-
-<footer>
+<footer style="text-align:center; padding:20px; background:rgba(30,30,30,0.9); color:#ccc;">
 <p>© 2026 Hillary Clarence Kusumo</p>
 </footer>
 
 <script>
-// Evaluation Canvas - network nodes for selection
-const evalCanvas = document.getElementById('evalCanvas');
-const evalCtx = evalCanvas.getContext('2d');
-let ew = evalCanvas.width = evalCanvas.offsetWidth;
-let eh = evalCanvas.height = evalCanvas.offsetHeight;
-const nodes = [];
-for(let i=0;i<60;i++){
-    nodes.push({x:Math.random()*ew, y:Math.random()*eh, vx:(Math.random()-0.5)*0.5, vy:(Math.random()-0.5)*0.5});
+// Toggle card content visibility
+function toggleCard(card) {
+    const content = card.querySelector('.card-content');
+    if(content.style.display==='block'){ content.style.display='none';}
+    else{ content.style.display='block';}
 }
-function animateEval(){
-    evalCtx.clearRect(0,0,ew,eh);
-    nodes.forEach((n,i)=>{
-        nodes.forEach((m,j)=>{
-            if(i<j){
-                let dx=n.x-m.x, dy=n.y-m.y, d=Math.sqrt(dx*dx+dy*dy);
-                if(d<120){
-                    evalCtx.strokeStyle='rgba(255,107,107,'+(1-d/120)+')';
-                    evalCtx.lineWidth=1;
-                    evalCtx.beginPath();
-                    evalCtx.moveTo(n.x,n.y);
-                    evalCtx.lineTo(m.x,m.y);
-                    evalCtx.stroke();
-                }
-            }
-        });
-        n.x+=n.vx; n.y+=n.vy;
-        if(n.x<0||n.x>ew)n.vx*=-1;
-        if(n.y<0||n.y>eh)n.vy*=-1;
-        evalCtx.fillStyle='#ff6b6b';
-        evalCtx.beginPath();
-        evalCtx.arc(n.x,n.y,3,0,Math.PI*2);
-        evalCtx.fill();
-    });
-    requestAnimationFrame(animateEval);
-}
-animateEval();
-window.addEventListener('resize',()=>{ew=evalCanvas.width=evalCanvas.offsetWidth; eh=evalCanvas.height=evalCanvas.offsetHeight;});
 
-// Annotation Canvas - moving cars with LiDAR cuboids
+// Annotation Canvas - LiDAR Cuboid Cars
 const annCanvas = document.getElementById('annotationCanvas');
-const annCtx = annCanvas.getContext('2d');
-let aw = annCanvas.width = annCanvas.offsetWidth;
-let ah = annCanvas.height = annCanvas.offsetHeight;
-
+const annCtx = annCanvas?.getContext('2d');
+let aw = annCanvas?.width = annCanvas?.offsetWidth || 0;
+let ah = annCanvas?.height = annCanvas?.offsetHeight || 0;
 const cars = [];
-for(let i=0;i<8;i++){
-    cars.push({x:Math.random()*aw, y:ah-50-Math.random()*100, w:60, h:30, speed:1+Math.random()*2, color:'#ff6b6b'});
+if(annCtx){
+    for(let i=0;i<6;i++){
+        cars.push({x:Math.random()*aw, y:ah-50-Math.random()*50, w:60, h:30, speed:1+Math.random()*2, color:'#ff6b6b'});
+    }
+    const signs = [];
+    for(let i=0;i<4;i++){ signs.push({x:Math.random()*aw, y:ah-150-Math.random()*50, w:20, h:30}); }
+    function animateAnn(){
+        annCtx.clearRect(0,0,aw,ah);
+        annCtx.fillStyle='#222';
+        annCtx.fillRect(0,ah-100,aw,100);
+        cars.forEach(c=>{
+            c.x+=c.speed;
+            if(c.x>aw)c.x=-c.w;
+            annCtx.fillStyle=c.color;
+            annCtx.fillRect(c.x,c.y,c.w,c.h);
+            annCtx.strokeStyle='#fff';
+            annCtx.strokeRect(c.x,c.y,c.w,c.h);
+        });
+        signs.forEach(s=>{
+            annCtx.fillStyle='#27ae60';
+            annCtx.fillRect(s.x,s.y,s.w,s.h);
+            annCtx.strokeStyle='#fff';
+            annCtx.strokeRect(s.x,s.y,s.w,s.h);
+        });
+        requestAnimationFrame(animateAnn);
+    }
+    animateAnn();
+    window.addEventListener('resize',()=>{ aw=annCanvas.width=annCanvas.offsetWidth; ah=annCanvas.height=annCanvas.offsetHeight;});
 }
-const signs = [];
-for(let i=0;i<5;i++){
-    signs.push({x:Math.random()*aw, y:ah-150-Math.random()*50, w:20, h:30});
-}
-
-function animateAnn(){
-    annCtx.clearRect(0,0,aw,ah);
-    // Road background
-    annCtx.fillStyle='#222';
-    annCtx.fillRect(0,ah-100,aw,100);
-    // Cars
-    cars.forEach(c=>{
-        c.x+=c.speed;
-        if(c.x>aw)c.x=-c.w;
-        annCtx.fillStyle=c.color;
-        annCtx.fillRect(c.x,c.y,c.w,c.h);
-        // Cuboid overlay
-        annCtx.strokeStyle='#fff';
-        annCtx.strokeRect(c.x,c.y,c.w,c.h);
-    });
-    // Traffic signs
-    signs.forEach(s=>{
-        annCtx.fillStyle='#27ae60';
-        annCtx.fillRect(s.x,s.y,s.w,s.h);
-        annCtx.strokeStyle='#fff';
-        annCtx.strokeRect(s.x,s.y,s.w,s.h);
-    });
-    requestAnimationFrame(animateAnn);
-}
-animateAnn();
-window.addEventListener('resize',()=>{aw=annCanvas.width=annCanvas.offsetWidth; ah=annCanvas.height=annCanvas.offsetHeight;});
 </script>
 
 </body>
