@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Hillary Kusumo Portfolio</title>
 <style>
   body {
     margin: 0;
@@ -12,8 +12,10 @@
     color: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    padding: 40px 0;
+    transition: filter 0.3s ease;
   }
 
   .grid {
@@ -22,6 +24,8 @@
     grid-gap: 20px;
     width: 90%;
     max-width: 1000px;
+    z-index: 1;
+    position: relative;
   }
 
   .card {
@@ -72,11 +76,79 @@
       height: 180px;
     }
   }
+
+  /* Overlay Styles */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17,17,17,0.95);
+    color: #fff;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 1000;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .overlay .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 25px;
+    background: #2980b9;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .overlay .container {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .section {
+    background-color: #222;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+  }
+
+  .overlay h1, .overlay h2, .overlay h3, .overlay p, .overlay ul {
+    color: #fff;
+  }
+
+  .overlay a {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+
+  .overlay img {
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+
 </style>
 </head>
 <body>
 
 <div class="grid">
+  <!-- Resume Card -->
   <a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="card">
     <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Resume');"></div>
     <div class="content">
@@ -85,6 +157,7 @@
     </div>
   </a>
 
+  <!-- Certificate Card -->
   <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="card">
     <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Certificate');"></div>
     <div class="content">
@@ -93,6 +166,16 @@
     </div>
   </a>
 
+  <!-- Annotation Card -->
+  <div class="card" id="annotationCard">
+    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Annotation');"></div>
+    <div class="content">
+      <h3>Annotation</h3>
+      <p>Open full portfolio view for annotation projects.</p>
+    </div>
+  </div>
+
+  <!-- Evaluation Card -->
   <a href="#" class="card">
     <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Evaluation');"></div>
     <div class="content">
@@ -100,15 +183,89 @@
       <p>Example of evaluation tasks and results in annotation projects.</p>
     </div>
   </a>
-
-  <a href="#" class="card">
-    <div class="thumbnail" style="background-image: url('https://via.placeholder.com/400x200?text=Annotation');"></div>
-    <div class="content">
-      <h3>Annotation</h3>
-      <p>Sample annotation work with images and bounding boxes for AI projects.</p>
-    </div>
-  </a>
 </div>
+
+<!-- Overlay for Annotation -->
+<div class="overlay" id="annotationOverlay">
+  <button class="close-btn" id="closeOverlay">Close</button>
+  <div class="container">
+    <h1>Hillary Kusumo | Annotation Portfolio/AI Trainer</h1>
+    <p style="text-align:center; font-size: 1.1em; font-weight: bold;">
+    Data Annotator | AI Trainer | Quality Analyst | Computer Vision & NLP | GEN AI | Content Evaluation | Bounding Box | Video Tagging
+    </p>
+    <p style="text-align:center; font-size: 1em;">AI Data Annotation Portfolio</p>
+
+    <div class="section">
+      <h2>About Me</h2>
+      <p>
+      Data annotator with over 5 years of experience on image, video, and text annotation projects.  
+      Worked with Sama, CloudFactory, Remotask, Appen, and Micro 1.  
+      Skilled in CVAT, LabelImg, and custom annotation platforms.  
+      Projects include autonomous driving, retail shelf labeling, drone footage segmentation, rodeo video annotation, and Micro 1 prompt reviewing.  
+      Proficient in bounding boxes, polygon segmentation, keypoints, and quality assurance.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Project: Rodeo Video Annotation</h2>
+      <p><strong>Tool:</strong> CVAT</p>
+      <p><strong>Annotation Format:</strong> COCO JSON</p>
+      <p><strong>Objects Labeled:</strong></p>
+      <ul>
+        <li>Rider</li>
+        <li>Horse</li>
+        <li>Bull</li>
+        <li>Barrel</li>
+        <li>Pickup Rider</li>
+      </ul>
+      <p><strong>Annotation Types:</strong></p>
+      <ul>
+        <li>Bounding Boxes</li>
+        <li>Keypoints</li>
+      </ul>
+      <p>Frames labeled from rodeo videos. Includes rider, horse, and bull body keypoints.</p>
+
+      <h3>Annotation Examples</h3>
+      <img src="Image%20Folder/0.png" alt="Screenshot 0">
+      <img src="Image%20Folder/1.png" alt="Screenshot 1">
+      <img src="Image%20Folder/2.png" alt="Screenshot 2">
+      <img src="Image%20Folder/3.png" alt="Screenshot 3">
+      <img src="Image%20Folder/4.png" alt="Screenshot 4">
+
+      <h3>Annotation Workflow Video</h3>
+      <p>
+        <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank">
+          Watch the annotation explanation video
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Script for Overlay -->
+<script>
+  const annotationCard = document.getElementById('annotationCard');
+  const overlay = document.getElementById('annotationOverlay');
+  const closeBtn = document.getElementById('closeOverlay');
+  const body = document.body;
+
+  annotationCard.addEventListener('click', () => {
+    overlay.classList.add('active');
+    body.style.filter = 'blur(2px) brightness(0.7)';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    body.style.filter = 'none';
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
+      body.style.filter = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
