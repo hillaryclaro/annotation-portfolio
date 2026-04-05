@@ -207,20 +207,19 @@ Your browser does not support the video tag.
 Your browser does not support the video tag.
 </video>
 </div>
-<p><strong>Video 1:</strong> This video shows realistic motion when the globe breaks. Audio is synchronized with the motion. The visuals are stable and free from artifacts, making the experience smooth and natural. This is why it is marked as Best.</p>
-<p><strong>Video 2:</strong> This video has visible artifacts, slight motion inconsistencies, and audio desynchronization. The globe break looks less realistic and the overall experience is less natural compared to Video 1.</p>
+<p><strong>Video 1:</strong> Shows realistic motion when the globe breaks. Audio is synchronized with the motion. Visuals are stable and free from artifacts.</p>
+<p><strong>Video 2:</strong> Visible artifacts, slight motion inconsistencies, and audio desynchronization. Globe break looks less realistic.</p>
 </div>
 
 <div id="analysis" class="tab-content">
 <h2>Analysis</h2>
-<p>Each video is evaluated in detail:</p>
 <ul>
 <li><strong>Motion:</strong> Video 1 shows smooth object movement, proper physics, and logical interactions. Video 2 has minor jitter and unnatural pauses.</li>
 <li><strong>Audio:</strong> Video 1’s audio is clear, balanced, and aligned with motion. Video 2 shows intermittent noise, hiss, and minor desynchronization.</li>
 <li><strong>Visual Quality:</strong> Video 1 has no grain, thermal noise, or banding. Video 2 contains slight visual artifacts and distortions.</li>
-<li><strong>Realism:</strong> Video 1 provides natural object interaction, especially noticeable when the globe breaks. Video 2’s interactions are less realistic.</li>
+<li><strong>Realism:</strong> Video 1 provides natural object interaction, especially when the globe breaks. Video 2’s interactions are less realistic.</li>
 </ul>
-<p>Overall, Video 1 is superior due to consistent motion, realistic physics, synchronized audio, and artifact-free visuals.</p>
+<p>Video 1 is superior due to consistent motion, realistic physics, synchronized audio, and artifact-free visuals.</p>
 </div>
 
 <div id="scoring" class="tab-content">
@@ -249,7 +248,7 @@ Video Comparison Update Log
 
 <div id="result" class="tab-content">
 <h2>Selected Video: Video 1</h2>
-<p>Video 1 is the best overall. Motion is realistic, the globe break is visually natural, audio is synchronized, and visuals are free from artifacts. Video 2 has noticeable artifacts, minor motion inconsistencies, and audio issues.</p>
+<p>Video 1 is the best overall. Motion is realistic, globe break is natural, audio is synchronized, visuals are artifact-free. Video 2 has noticeable artifacts, minor motion inconsistencies, and audio issues.</p>
 </div>
 
 </div>
@@ -260,7 +259,7 @@ Video Comparison Update Log
 <div class="close" onclick="closeModal('annotationModal')">Close</div>
 <div class="modal-content">
 <h1>Annotation Work</h1>
-<p>This section contains projects showing detailed CVAT annotation tasks. Includes bounding boxes, segmentation, and cuboids.</p>
+<p>This section contains projects showing detailed CVAT annotation tasks including bounding boxes, segmentation, and cuboids.</p>
 <h2>Examples</h2>
 <div class="screenshot">CVAT Screenshot Example 1: Bounding boxes</div>
 <div class="screenshot">CVAT Screenshot Example 2: Segmentation polygon</div>
@@ -270,15 +269,27 @@ Video Comparison Update Log
 </div>
 
 <script>
-function openModal(id){document.getElementById(id).style.display='block';}
+function openModal(id){
+  document.getElementById(id).style.display='block';
+  // Make first tab active in evaluation modal
+  if(id === 'evaluationModal'){
+    let tabs = document.querySelectorAll('#evaluationModal .tab');
+    let contents = document.querySelectorAll('#evaluationModal .tab-content');
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+    if(tabs[0]) tabs[0].classList.add('active');
+    if(contents[0]) contents[0].classList.add('active');
+  }
+}
 function closeModal(id){document.getElementById(id).style.display='none';}
-function openTab(evt,name){
-let t=document.getElementsByClassName("tab-content");
-for(let i=0;i<t.length;i++){t[i].classList.remove("active");}
-let b=document.getElementsByClassName("tab");
-for(let i=0;i<b.length;i++){b[i].classList.remove("active");}
-document.getElementById(name).classList.add("active");
-evt.currentTarget.classList.add("active");
+function openTab(evt, name){
+  let modal = evt.currentTarget.closest('.modal');
+  let tabs = modal.querySelectorAll('.tab');
+  let contents = modal.querySelectorAll('.tab-content');
+  tabs.forEach(t => t.classList.remove('active'));
+  contents.forEach(c => c.classList.remove('active'));
+  evt.currentTarget.classList.add('active');
+  document.getElementById(name).classList.add('active');
 }
 </script>
 
