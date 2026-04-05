@@ -13,45 +13,36 @@ body {
     color: #333;
     line-height: 1.6;
 }
-
 .container {
     max-width: 900px;
     margin: auto;
     padding: 20px;
 }
-
 h1 {
     text-align: center;
     color: #2c3e50;
 }
-
 h2 {
     color: #34495e;
     border-bottom: 2px solid #2980b9;
     padding-bottom: 5px;
 }
-
 h3 {
     color: #2980b9;
 }
-
 p, ul {
     margin-bottom: 15px;
 }
-
 ul {
     padding-left: 20px;
 }
-
 a {
     color: #2980b9;
     text-decoration: none;
 }
-
 a:hover {
     text-decoration: underline;
 }
-
 .section {
     background-color: #fff;
     padding: 20px;
@@ -59,7 +50,6 @@ a:hover {
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
-
 img {
     max-width: 100%;
     display: block;
@@ -67,11 +57,9 @@ img {
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 .contact-info p {
     margin: 5px 0;
 }
-
 .button {
     display:inline-block;
     padding:10px 20px;
@@ -80,10 +68,8 @@ img {
     border-radius:5px;
     margin-top:10px;
 }
-
 .button-blue { background-color:#2980b9; }
 .button-green { background-color:#27ae60; }
-
 .card {
     flex: 1 1 250px;
     background-color: #ecf0f1;
@@ -92,20 +78,12 @@ img {
     text-align: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     cursor: pointer;
-    transition: all 0.3s ease;
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
-
 /* Overlay Styles */
 .overlay {
     position: fixed;
@@ -119,11 +97,9 @@ img {
     z-index: 1000;
     padding: 20px;
 }
-
 .overlay.active {
     display: block;
 }
-
 .overlay .close-btn {
     position: fixed;
     top: 20px;
@@ -137,18 +113,20 @@ img {
     cursor: pointer;
     z-index: 1001;
 }
-
-/* Grid for annotation images */
-.annotation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+.video-container {
+    margin-bottom: 20px;
 }
-
-.annotation-grid img {
-    width: 100%;
-    height: auto;
+.video-thumbnail {
+    max-width: 200px;
+    cursor: pointer;
     border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 5px;
+}
+.video-player {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
 }
 </style>
 </head>
@@ -200,7 +178,7 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and quality assuranc
   <!-- Evaluation Card -->
   <div class="card" id="evaluationCard">
     <h3>Evaluation</h3>
-    <p>Click to view evaluation workflow</p>
+    <p>Click to view video and image evaluation workflow</p>
   </div>
 
 </div>
@@ -217,7 +195,7 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and quality assuranc
 
 <!-- Overlay for Annotation -->
 <div class="overlay" id="annotationOverlay">
-  <button class="close-btn" id="closeAnnotationOverlay">Close</button>
+  <button class="close-btn" id="closeOverlay">Close</button>
   <div class="container">
     <h2>Project: Rodeo Video Annotation</h2>
     <p><strong>Tool:</strong> CVAT</p>
@@ -236,21 +214,17 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and quality assuranc
       <li>Keypoints</li>
     </ul>
     <p>Frames labeled from rodeo competition videos. Annotation includes rider pose keypoints and horse or bull body keypoints.</p>
-
     <h3>Annotation Examples</h3>
-    <div class="annotation-grid">
-      <img src="Image%20Folder/0.png" alt="Screenshot 0">
-      <img src="Image%20Folder/1.png" alt="Screenshot 1">
-      <img src="Image%20Folder/2.png" alt="Screenshot 2">
-      <img src="Image%20Folder/3.png" alt="Screenshot 3">
-      <img src="Image%20Folder/4.png" alt="Screenshot 4">
-      <img src="Image%20Folder/5.png" alt="Screenshot 5">
-      <img src="Image%20Folder/6.png" alt="Screenshot 6">
-      <img src="Image%20Folder/7.png" alt="Screenshot 7">
-      <img src="Image%20Folder/8.png" alt="Screenshot 8">
-      <img src="Image%20Folder/9.png" alt="Screenshot 9">
-    </div>
-
+    <img src="Image%20Folder/0.png" alt="Screenshot 0">
+    <img src="Image%20Folder/1.png" alt="Screenshot 1">
+    <img src="Image%20Folder/2.png" alt="Screenshot 2">
+    <img src="Image%20Folder/3.png" alt="Screenshot 3">
+    <img src="Image%20Folder/4.png" alt="Screenshot 4">
+    <img src="Image%20Folder/5.png" alt="Screenshot 5">
+    <img src="Image%20Folder/6.png" alt="Screenshot 6">
+    <img src="Image%20Folder/7.png" alt="Screenshot 7">
+    <img src="Image%20Folder/8.png" alt="Screenshot 8">
+    <img src="Image%20Folder/9.png" alt="Screenshot 9">
     <h3>Annotation Workflow Video</h3>
     <p>
       <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank">
@@ -262,26 +236,33 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and quality assuranc
 
 <!-- Overlay for Evaluation -->
 <div class="overlay" id="evaluationOverlay">
-  <button class="close-btn" id="closeEvaluationOverlay">Close</button>
+  <button class="close-btn" id="closeEvaluation">Close</button>
   <div class="container">
-    <h2>Evaluation Portfolio</h2>
-    <p>This portfolio demonstrates structured evaluation of visual content. It covers both images and videos using defined rubrics, modules, and guidelines.</p>
+    <h2>Video & Image Evaluation Workflow</h2>
+    <p>Follow general guidance for video/audio/image evaluation, including QN issues, audio noise, visual noise, and model defect identification.</p>
 
-    <h3>Rubric Framework</h3>
-    <table>
-      <tr><th>Criterion</th><th>Description</th><th>Scale</th></tr>
-      <tr><td>Instruction</td><td>Follows prompt accurately</td><td>1–5</td></tr>
-      <tr><td>Motion</td><td>Smoothness and consistency</td><td>1–5</td></tr>
-      <tr><td>Audio</td><td>Alignment and clarity</td><td>1–5</td></tr>
-      <tr><td>Composition</td><td>Framing and balance</td><td>1–5</td></tr>
-    </table>
+    <h3>Video Examples</h3>
+    <div class="video-container">
+      <img src="Image%20Folder/video1.png" class="video-thumbnail" data-src="https://vimeo.com/1180209118?share=copy&fl=sv&fe=ci" alt="Video 1">
+      <p>Video 1: Ball disappears after hitting dome</p>
+    </div>
+    <div class="video-container">
+      <img src="Image%20Folder/video2.png" class="video-thumbnail" data-src="https://vimeo.com/1180209125" alt="Video 2">
+      <p>Video 2: More natural break and audio</p>
+    </div>
 
-    <h3>Evaluation Modules</h3>
+    <h3>Video Player</h3>
+    <video controls id="evalVideoPlayer" class="video-player">
+      <source src="" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <h3>Evaluation Guidelines</h3>
     <ul>
-      <li><strong>Motion Analysis:</strong> Detects movement inconsistencies and unnatural transitions.</li>
-      <li><strong>Audio Sync:</strong> Checks alignment and clarity of sound.</li>
-      <li><strong>Composition Check:</strong> Assesses visual framing and balance.</li>
-      <li><strong>Instruction Compliance:</strong> Confirms prompt adherence.</li>
+      <li>Black screen, audio issues, generation differences must be QN’d.</li>
+      <li>Audio: hiss, hum, clicks, ambient noise.</li>
+      <li>Visual: grain, speckles, thermal noise, read noise, amplification noise.</li>
+      <li>Penalize model for deformities, distorted faces, unnatural limb movements.</li>
     </ul>
   </div>
 </div>
@@ -289,30 +270,50 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and quality assuranc
 <script>
 const annotationCard = document.getElementById('annotationCard');
 const annotationOverlay = document.getElementById('annotationOverlay');
-const closeAnnotation = document.getElementById('closeAnnotationOverlay');
+const closeAnnotationBtn = document.getElementById('closeOverlay');
 
 annotationCard.addEventListener('click', () => {
-    annotationOverlay.classList.add('active');
-});
-closeAnnotation.addEventListener('click', () => {
-    annotationOverlay.classList.remove('active');
-});
-annotationOverlay.addEventListener('click', (e) => {
-    if(e.target === annotationOverlay) annotationOverlay.classList.remove('active');
+  annotationOverlay.classList.add('active');
 });
 
+closeAnnotationBtn.addEventListener('click', () => {
+  annotationOverlay.classList.remove('active');
+});
+
+annotationOverlay.addEventListener('click', (e) => {
+  if(e.target === annotationOverlay) {
+    annotationOverlay.classList.remove('active');
+  }
+});
+
+// Evaluation overlay
 const evaluationCard = document.getElementById('evaluationCard');
 const evaluationOverlay = document.getElementById('evaluationOverlay');
-const closeEvaluation = document.getElementById('closeEvaluationOverlay');
+const closeEvaluationBtn = document.getElementById('closeEvaluation');
+const videoPlayer = document.getElementById('evalVideoPlayer');
+const thumbnails = document.querySelectorAll('.video-thumbnail');
 
 evaluationCard.addEventListener('click', () => {
-    evaluationOverlay.classList.add('active');
+  evaluationOverlay.classList.add('active');
 });
-closeEvaluation.addEventListener('click', () => {
-    evaluationOverlay.classList.remove('active');
+
+closeEvaluationBtn.addEventListener('click', () => {
+  evaluationOverlay.classList.remove('active');
 });
+
 evaluationOverlay.addEventListener('click', (e) => {
-    if(e.target === evaluationOverlay) evaluationOverlay.classList.remove('active');
+  if(e.target === evaluationOverlay) {
+    evaluationOverlay.classList.remove('active');
+  }
+});
+
+// Play video on thumbnail click
+thumbnails.forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    const src = thumb.getAttribute('data-src');
+    videoPlayer.src = src;
+    videoPlayer.play();
+  });
 });
 </script>
 
