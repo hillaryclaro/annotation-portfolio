@@ -11,6 +11,7 @@ body {
     background-color: #111;
     color: #f5f5f5;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 header {
     text-align: center;
@@ -31,7 +32,7 @@ header p a:hover { background: #ff6b6b; }
 
 .container { max-width: 1200px; margin: auto; padding: 20px; }
 
-/* Grid for Evaluation & Annotation */
+/* Card Grids */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +40,6 @@ header p a:hover { background: #ff6b6b; }
     justify-content: center;
     margin-bottom: 30px;
 }
-
 .card {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
@@ -49,11 +49,10 @@ header p a:hover { background: #ff6b6b; }
     max-width: 480px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.6); }
-
 .card h2 { color: #fff; margin-bottom: 10px; border-bottom: 2px solid #ff6b6b; padding-bottom: 5px; }
 .card p, .card ul { color: #ddd; margin-bottom: 12px; }
 .card ul { padding-left: 20px; }
@@ -86,6 +85,9 @@ header p a:hover { background: #ff6b6b; }
     flex-direction: column;
 }
 
+/* Canvas overlay */
+.card canvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; border-radius:16px; }
+
 footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); color: #ccc; }
 
 @media screen and (max-width: 1000px) {
@@ -111,7 +113,8 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
 <div class="card-container">
 
 <!-- Evaluation Work -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view','_blank')">
+<div class="card" id="evaluation-card" onclick="window.open('https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view','_blank')">
+    <canvas id="evalCanvas"></canvas>
     <h2>Evaluation Work</h2>
     <p>Structured evaluation of visual content using rubrics and modules for images and videos.</p>
     <h3>Case Studies</h3>
@@ -122,7 +125,8 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
 </div>
 
 <!-- Annotation Work -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view','_blank')">
+<div class="card" id="annotation-card" onclick="window.open('https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view','_blank')">
+    <canvas id="annotationCanvas"></canvas>
     <h2>Annotation Work</h2>
     <p>Data annotation portfolio with over 5 years of experience in image, video, and text labeling projects.</p>
     <h3>Rodeo Video Annotation</h3>
@@ -142,16 +146,16 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
 <!-- Resume & Certificate Cards Side-by-Side Vertically -->
 <div class="card-horizontal-container">
 
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view','_blank')">
+<div class="card" onclick="window.open('https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing','_blank')">
     <h2>Resume</h2>
     <p>Download or view my professional resume.</p>
-    <a href="https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view" target="_blank" class="button">View Resume</a>
+    <a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="button">View Resume</a>
 </div>
 
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1VtiE6jcfa3kaaAVhJ_mWvuZwEw8RtdUD/preview','_blank')">
+<div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing','_blank')">
     <h2>Certificate</h2>
-    <p>QA Certificate of Completion, Oct 2022.</p>
-    <a href="https://drive.google.com/file/d/1VtiE6jcfa3kaaAVhJ_mWvuZwEw8RtdUD/preview" target="_blank" class="button">View Certificate</a>
+    <p>Micro 1 Certificate of Completion.</p>
+    <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button">View Certificate</a>
 </div>
 
 </div>
@@ -161,5 +165,88 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
 <footer>
 <p>© 2026 Hillary Clarence Kusumo</p>
 </footer>
+
+<script>
+// Evaluation Canvas - network nodes for selection
+const evalCanvas = document.getElementById('evalCanvas');
+const evalCtx = evalCanvas.getContext('2d');
+let ew = evalCanvas.width = evalCanvas.offsetWidth;
+let eh = evalCanvas.height = evalCanvas.offsetHeight;
+const nodes = [];
+for(let i=0;i<60;i++){
+    nodes.push({x:Math.random()*ew, y:Math.random()*eh, vx:(Math.random()-0.5)*0.5, vy:(Math.random()-0.5)*0.5});
+}
+function animateEval(){
+    evalCtx.clearRect(0,0,ew,eh);
+    nodes.forEach((n,i)=>{
+        nodes.forEach((m,j)=>{
+            if(i<j){
+                let dx=n.x-m.x, dy=n.y-m.y, d=Math.sqrt(dx*dx+dy*dy);
+                if(d<120){
+                    evalCtx.strokeStyle='rgba(255,107,107,'+(1-d/120)+')';
+                    evalCtx.lineWidth=1;
+                    evalCtx.beginPath();
+                    evalCtx.moveTo(n.x,n.y);
+                    evalCtx.lineTo(m.x,m.y);
+                    evalCtx.stroke();
+                }
+            }
+        });
+        n.x+=n.vx; n.y+=n.vy;
+        if(n.x<0||n.x>ew)n.vx*=-1;
+        if(n.y<0||n.y>eh)n.vy*=-1;
+        evalCtx.fillStyle='#ff6b6b';
+        evalCtx.beginPath();
+        evalCtx.arc(n.x,n.y,3,0,Math.PI*2);
+        evalCtx.fill();
+    });
+    requestAnimationFrame(animateEval);
+}
+animateEval();
+window.addEventListener('resize',()=>{ew=evalCanvas.width=evalCanvas.offsetWidth; eh=evalCanvas.height=evalCanvas.offsetHeight;});
+
+// Annotation Canvas - moving cars with LiDAR cuboids
+const annCanvas = document.getElementById('annotationCanvas');
+const annCtx = annCanvas.getContext('2d');
+let aw = annCanvas.width = annCanvas.offsetWidth;
+let ah = annCanvas.height = annCanvas.offsetHeight;
+
+const cars = [];
+for(let i=0;i<8;i++){
+    cars.push({x:Math.random()*aw, y:ah-50-Math.random()*100, w:60, h:30, speed:1+Math.random()*2, color:'#ff6b6b'});
+}
+const signs = [];
+for(let i=0;i<5;i++){
+    signs.push({x:Math.random()*aw, y:ah-150-Math.random()*50, w:20, h:30});
+}
+
+function animateAnn(){
+    annCtx.clearRect(0,0,aw,ah);
+    // Road background
+    annCtx.fillStyle='#222';
+    annCtx.fillRect(0,ah-100,aw,100);
+    // Cars
+    cars.forEach(c=>{
+        c.x+=c.speed;
+        if(c.x>aw)c.x=-c.w;
+        annCtx.fillStyle=c.color;
+        annCtx.fillRect(c.x,c.y,c.w,c.h);
+        // Cuboid overlay
+        annCtx.strokeStyle='#fff';
+        annCtx.strokeRect(c.x,c.y,c.w,c.h);
+    });
+    // Traffic signs
+    signs.forEach(s=>{
+        annCtx.fillStyle='#27ae60';
+        annCtx.fillRect(s.x,s.y,s.w,s.h);
+        annCtx.strokeStyle='#fff';
+        annCtx.strokeRect(s.x,s.y,s.w,s.h);
+    });
+    requestAnimationFrame(animateAnn);
+}
+animateAnn();
+window.addEventListener('resize',()=>{aw=annCanvas.width=annCanvas.offsetWidth; ah=annCanvas.height=annCanvas.offsetHeight;});
+</script>
+
 </body>
 </html>
