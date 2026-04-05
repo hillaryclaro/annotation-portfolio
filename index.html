@@ -35,20 +35,7 @@ canvas {
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.3s;
 }
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-/* Thumbnails */
-.thumb-eval { background: linear-gradient(135deg,#38bdf8,#0ea5e9); }
-.thumb-annot { background: linear-gradient(135deg,#22c55e,#16a34a); }
-.thumb-image { background: linear-gradient(135deg,#f59e0b,#d97706); }
-.thumb-video { background: linear-gradient(135deg,#a78bfa,#7c3aed); }
-.thumb-module { background: linear-gradient(135deg,#f43f5e,#be123c); }
-.thumb-doc { background: linear-gradient(135deg,#64748b,#334155); }
 
 .thumbnail {
   height: 140px;
@@ -58,9 +45,12 @@ canvas {
   font-weight: bold;
 }
 
-.card-content {
-  padding: 15px;
-}
+.eval { background: linear-gradient(#38bdf8,#0ea5e9); }
+.annot { background: linear-gradient(#22c55e,#16a34a); }
+.resume { background: linear-gradient(#64748b,#334155); }
+.cert { background: linear-gradient(#f43f5e,#be123c); }
+
+.card-content { padding: 15px; }
 
 /* Modal */
 .modal {
@@ -84,7 +74,6 @@ canvas {
 .close {
   float: right;
   cursor: pointer;
-  font-size: 20px;
 }
 
 /* Tabs */
@@ -105,15 +94,6 @@ iframe {
   width: 100%;
   height: 300px;
   border-radius: 10px;
-  border: none;
-}
-
-/* Links */
-.links a {
-  display: inline-block;
-  margin-right: 15px;
-  color: #38bdf8;
-  text-decoration: none;
 }
 </style>
 </head>
@@ -125,153 +105,107 @@ iframe {
 <div class="container">
 <div class="grid">
 
-<!-- Evaluation -->
 <div class="card" onclick="openModal('evaluationModal')">
-<div class="thumbnail thumb-eval">EVALUATION</div>
-<div class="card-content">
-<h3>Video Evaluation</h3>
-<p>Compare outputs. Select best quality.</p>
+<div class="thumbnail eval">EVALUATION</div>
+<div class="card-content"><h3>Evaluation</h3></div>
+</div>
+
+<div class="card" onclick="openModal('annotationModal')">
+<div class="thumbnail annot">ANNOTATION</div>
+<div class="card-content"><h3>Annotation</h3></div>
+</div>
+
+<div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view')">
+<div class="thumbnail resume">RESUME</div>
+<div class="card-content"><h3>Resume</h3></div>
+</div>
+
+<div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing')">
+<div class="thumbnail cert">CERTIFICATES</div>
+<div class="card-content"><h3>Certificates</h3></div>
+</div>
+
+</div>
+</div>
+
+<!-- Evaluation -->
+<div id="evaluationModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('evaluationModal')">X</span>
+
+<h2>Evaluation</h2>
+
+<div class="tabs">
+<div class="tab active" onclick="openTab(event,'videos')">Videos</div>
+<div class="tab" onclick="openTab(event,'analysis')">Analysis</div>
+<div class="tab" onclick="openTab(event,'image')">Image Bursts</div>
+<div class="tab" onclick="openTab(event,'video')">Video Bursts</div>
+<div class="tab" onclick="openTab(event,'modules')">Modules</div>
+<div class="tab" onclick="openTab(event,'result')">Result</div>
+</div>
+
+<div id="videos" class="tab-content active">
+<div class="video-grid">
+<iframe src="https://drive.google.com/file/d/1U7mZLohpIS313wj7bwdaYo0znOFfQM5R/preview"></iframe>
+<iframe src="https://drive.google.com/file/d/1CjDk7jUuK7KH3Ulovd7SBPfKi8LXm5Is/preview"></iframe>
+</div>
+</div>
+
+<div id="analysis" class="tab-content">
+<p>Video 1 shows better motion, cleaner audio, and realistic break.</p>
+<p>Video 2 shows inconsistencies and more noise.</p>
+</div>
+
+<div id="image" class="tab-content">
+<p>Review defects, edits, and instruction accuracy.</p>
+</div>
+
+<div id="video" class="tab-content">
+<p>Check motion, audio issues, and rendering artifacts.</p>
+</div>
+
+<div id="modules" class="tab-content">
+<pre style="white-space: pre-wrap; font-size:12px;">
+Video Comparison Update Log
+
+QN if:
+Black screen
+Responses differ heavily
+
+Audio Issues:
+Hiss, buzz, ambient noise, clipping
+
+Visual Issues:
+Grain, thermal noise, banding
+
+Reminder:
+Select video with less noise
+
+Check deformities:
+Distorted faces
+Unnatural movement
+</pre>
+</div>
+
+<div id="result" class="tab-content">
+<h3>Best Video: Video 1</h3>
+<p>Better motion, cleaner audio, realistic break.</p>
+</div>
+
 </div>
 </div>
 
 <!-- Annotation -->
-<div class="card" onclick="openModal('annotationModal')">
-<div class="thumbnail thumb-annot">ANNOTATION</div>
-<div class="card-content">
-<h3>Annotation Work</h3>
-<p>Bounding boxes, segmentation, cuboids.</p>
-</div>
-</div>
-
-<!-- Image -->
-<div class="card" onclick="openModal('imageModal')">
-<div class="thumbnail thumb-image">IMAGE BURSTS</div>
-<div class="card-content">
-<h3>Image Review</h3>
-<p>Edit quality and defects.</p>
-</div>
-</div>
-
-<!-- Video -->
-<div class="card" onclick="openModal('videoModal')">
-<div class="thumbnail thumb-video">VIDEO BURSTS</div>
-<div class="card-content">
-<h3>Video Tasks</h3>
-<p>Motion and audio checks.</p>
-</div>
-</div>
-
-<!-- Modules -->
-<div class="card" onclick="openModal('modulesModal')">
-<div class="thumbnail thumb-module">MODULES</div>
-<div class="card-content">
-<h3>Guidelines</h3>
-<p>Workflows and QA rules.</p>
-</div>
-</div>
-
-<!-- Resume -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view')">
-<div class="thumbnail thumb-doc">RESUME</div>
-<div class="card-content">
-<h3>Resume</h3>
-<p>View experience.</p>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- Evaluation Modal -->
-<div id="evaluationModal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('evaluationModal')">&times;</span>
-
-<h2>Video Evaluation</h2>
-
-<div class="tabs">
-<div class="tab active" onclick="openTab(event,'ev1')">Videos</div>
-<div class="tab" onclick="openTab(event,'ev2')">Analysis</div>
-<div class="tab" onclick="openTab(event,'ev3')">Guidelines</div>
-<div class="tab" onclick="openTab(event,'ev4')">Result</div>
-</div>
-
-<div id="ev1" class="tab-content active">
-<div class="video-grid">
-<iframe src="https://drive.google.com/file/d/1U7mZLohpIS313wj7bwdaYo0znOFfQM5R/preview"></iframe>
-<iframe src="https://drive.google.com/file/d/1U7mZLohpIS313wj7bwdaYo0znOFfQM5R/preview"></iframe>
-</div>
-</div>
-
-<div id="ev2" class="tab-content">
-<p>Video 1 shows stable motion and consistent physics.</p>
-<p>Video 2 shows breaks and weaker transitions.</p>
-<p>Audio in Video 1 is clean. Video 2 has noise artifacts.</p>
-</div>
-
-<div id="ev3" class="tab-content">
-<ul>
-<li>Check hiss, buzz, clipping</li>
-<li>Check grain, distortion</li>
-<li>Check motion consistency</li>
-<li>Check realism</li>
-</ul>
-</div>
-
-<div id="ev4" class="tab-content">
-<h3>Best Video: Video 1</h3>
-<p>Better motion. Cleaner audio. Realistic break.</p>
-</div>
-
-</div>
-</div>
-
-<!-- Annotation Modal -->
 <div id="annotationModal" class="modal">
 <div class="modal-content">
-<span class="close" onclick="closeModal('annotationModal')">&times;</span>
+<span class="close" onclick="closeModal('annotationModal')">X</span>
 
-<h2>Annotation Experience</h2>
-
+<h2>Annotation</h2>
 <ul>
-<li>Sama. Autonomous Driving. Cuboids and polygons.</li>
-<li>CloudFactory. Retail shelf labeling. Keypoints.</li>
-<li>CloudFactory. Drone agriculture. Segmentation.</li>
+<li>Sama. Autonomous driving. Cuboids</li>
+<li>CloudFactory. Retail labeling</li>
+<li>Drone segmentation</li>
 </ul>
-
-</div>
-</div>
-
-<!-- Image Modal -->
-<div id="imageModal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('imageModal')">&times;</span>
-<h2>Image Bursts</h2>
-<p>Check defects. Follow edit instructions. Validate outputs.</p>
-</div>
-</div>
-
-<!-- Video Modal -->
-<div id="videoModal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('videoModal')">&times;</span>
-<h2>Video Bursts</h2>
-<p>Evaluate motion, audio, rendering issues.</p>
-</div>
-</div>
-
-<!-- Modules -->
-<div id="modulesModal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('modulesModal')">&times;</span>
-
-<h2>Modules</h2>
-<p>Guidelines for QA. Workflow standards.</p>
-
-<div class="links">
-<a href="https://github.com/">GitHub</a>
-<a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/">LinkedIn</a>
-</div>
 
 </div>
 </div>
@@ -289,14 +223,14 @@ document.getElementById(name).classList.add("active");
 evt.currentTarget.classList.add("active");
 }
 
-/* Background animation */
+/* background */
 const c=document.getElementById("bg");
 const x=c.getContext("2d");
 c.width=window.innerWidth;
 c.height=window.innerHeight;
 
 let n=[];
-for(let i=0;i<80;i++){
+for(let i=0;i<60;i++){
 n.push({x:Math.random()*c.width,y:Math.random()*c.height,dx:Math.random()-0.5,dy:Math.random()-0.5});
 }
 
@@ -305,10 +239,6 @@ x.clearRect(0,0,c.width,c.height);
 n.forEach(a=>{
 a.x+=a.dx;a.y+=a.dy;
 x.beginPath();x.arc(a.x,a.y,2,0,6.28);x.fillStyle="#38bdf8";x.fill();
-n.forEach(b=>{
-let d=Math.hypot(a.x-b.x,a.y-b.y);
-if(d<100){x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.strokeStyle="rgba(56,189,248,0.1)";x.stroke();}
-});
 });
 requestAnimationFrame(draw);
 }
