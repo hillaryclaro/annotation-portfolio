@@ -5,35 +5,55 @@
 <title>Hillary Clarence | Portfolio</title>
 <style>
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0; background-color: #111; color: #f5f5f5;
-    line-height: 1.6; overflow-x: hidden; position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0; background: #111; color: #f5f5f5;
+  line-height: 1.6; overflow-x: hidden; position: relative;
 }
 header {
-    background: rgba(30,30,30,0.9); text-align:center; padding:30px 20px; 
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  background: rgba(30,30,30,0.9); text-align:center; padding:30px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
 header h1 { font-size:2.4rem; margin-bottom:10px; letter-spacing:1px; }
 header p a {
-    color:#f5f5f5; background:#333; padding:6px 14px; border-radius:5px;
-    text-decoration:none; margin:0 5px; font-size:0.9rem;
+  color:#f5f5f5; background:#333; padding:6px 14px; border-radius:5px;
+  text-decoration:none; margin:0 5px; font-size:0.9rem;
 }
 header p a:hover { background:#ff6b6b; transform:scale(1.05); }
-.container { max-width:1200px; margin:auto; padding:30px 20px; display:flex; flex-wrap:wrap; gap:30px; justify-content:center; }
-.card { flex:1 1 400px; background: rgba(255,255,255,0.05); padding:25px; border-radius:16px; 
-       border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 20px rgba(0,0,0,0.5); 
-       cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; backdrop-filter: blur(8px); }
+
+.container {
+  max-width:1200px; margin:auto; padding:30px 20px;
+  display:flex; flex-wrap:wrap; gap:30px; justify-content:center;
+}
+
+.card {
+  flex:1 1 500px;
+  display:flex; flex-direction:column;
+  background: rgba(255,255,255,0.05); border-radius:16px;
+  border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; backdrop-filter: blur(8px);
+  max-height: 700px; overflow:hidden;
+}
 .card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.6); }
-.card h2 { color:#fff; margin-bottom:15px; border-bottom:2px solid #ff6b6b; padding-bottom:5px; }
-.card iframe { width:100%; height:350px; border-radius:12px; margin-top:15px; border:2px solid #222; transition:transform 0.3s; }
-.card iframe:hover { transform:scale(1.02); }
-.button { display:inline-block; background:#222; color:#f5f5f5; padding:8px 18px; margin-top:10px; border-radius:6px; text-decoration:none; transition: background 0.3s, transform 0.3s; font-weight:600; }
+
+.card-header { padding:20px; border-bottom:2px solid #ff6b6b; }
+.card-header h2 { margin:0; color:#fff; font-size:1.7rem; }
+.card-body { padding:20px; overflow-y:auto; flex:1; }
+
+.card-body p, .card-body ul { margin-bottom:12px; color:#ddd; }
+.card-body ul { padding-left:20px; }
+.card-body li { margin-bottom:8px; position:relative; padding-left:20px; }
+.card-body li::before { content:'⚡'; position:absolute; left:0; color:#ff6b6b; }
+
+iframe { width:100%; height:250px; border-radius:12px; margin:10px 0; border:2px solid #222; }
+iframe:hover { transform:scale(1.02); }
+
+.button { display:inline-block; background:#222; color:#f5f5f5; padding:8px 18px;
+         margin:5px 5px 0 0; border-radius:6px; text-decoration:none;
+         transition: background 0.3s, transform 0.3s; font-weight:600; }
 .button:hover { background:#ff6b6b; transform:scale(1.05); }
-ul { margin-top:10px; padding-left:20px; }
-li { margin-bottom:10px; position:relative; padding-left:20px; color:#ddd; }
-li::before { content:'⚡'; position:absolute; left:0; color:#ff6b6b; }
+
 #networkCanvas {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index:-1; background:#111;
+  position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background:#111;
 }
 </style>
 </head>
@@ -52,53 +72,60 @@ li::before { content:'⚡'; position:absolute; left:0; color:#ff6b6b; }
 <div class="container">
 
 <!-- Evaluation Card -->
-<div class="card" id="evaluationCard">
-  <h2>Evaluation Work</h2>
-  <p>This portfolio demonstrates structured evaluation of visual content. Covers images and videos using rubrics, modules, and guidelines.</p>
-  <h3>Case Studies</h3>
-  <p>Video 1</p>
-  <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
-  <a href="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/view" target="_blank" class="button">Open Video 1</a>
-  <p>Video 2</p>
-  <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
-  <a href="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view?usp=sharing" target="_blank" class="button">Open Video 2</a>
+<div class="card">
+  <div class="card-header">
+    <h2>Evaluation Work</h2>
+  </div>
+  <div class="card-body">
+    <p>Structured evaluation of visual content, covering images and videos using rubrics and modules.</p>
+    <h3>Case Studies</h3>
+    <p>Video 1</p>
+    <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
+    <a href="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/view" target="_blank" class="button">Open Video 1</a>
+    <p>Video 2</p>
+    <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
+    <a href="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view?usp=sharing" target="_blank" class="button">Open Video 2</a>
 
-  <h3>Evaluation Modules</h3>
-  <ul>
-    <li><strong>Motion Analysis:</strong> Detects movement inconsistencies and unnatural transitions.</li>
-    <li><strong>Audio Sync:</strong> Checks alignment and clarity of sound.</li>
-    <li><strong>Composition Check:</strong> Assesses visual framing and balance.</li>
-    <li><strong>Instruction Compliance:</strong> Confirms prompt adherence.</li>
-  </ul>
+    <h3>Evaluation Modules</h3>
+    <ul>
+      <li><strong>Motion Analysis:</strong> Detects movement inconsistencies and unnatural transitions.</li>
+      <li><strong>Audio Sync:</strong> Checks alignment and clarity of sound.</li>
+      <li><strong>Composition Check:</strong> Assesses visual framing and balance.</li>
+      <li><strong>Instruction Compliance:</strong> Confirms prompt adherence.</li>
+    </ul>
+  </div>
 </div>
 
 <!-- Annotation Card -->
-<div class="card" id="annotationCard">
-  <h2>Annotation Work</h2>
-  <p>Data annotation portfolio with over 5 years experience in image, video, and text labeling.</p>
-  
-  <h3>Rodeo Video Annotation</h3>
-  <p><strong>Tool:</strong> CVAT | <strong>Format:</strong> COCO JSON</p>
-  <p><strong>Objects Labeled:</strong> Rider, Horse, Bull, Barrel, Pickup Rider</p>
-  <p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints</p>
-  
-  <h3>Annotation Examples</h3>
-  <img src="Image%20Folder/0.png" alt="Screenshot 0">
-  <img src="Image%20Folder/1.png" alt="Screenshot 1">
-  <img src="Image%20Folder/2.png" alt="Screenshot 2">
-  
-  <h3>Annotation Workflow Video</h3>
-  <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank" class="button">Watch Workflow Video</a>
+<div class="card">
+  <div class="card-header">
+    <h2>Annotation Work</h2>
+  </div>
+  <div class="card-body">
+    <p>Data annotation portfolio with 5+ years experience on image, video, and text labeling projects.</p>
+    
+    <h3>Rodeo Video Annotation</h3>
+    <p><strong>Tool:</strong> CVAT | <strong>Format:</strong> COCO JSON</p>
+    <p><strong>Objects Labeled:</strong> Rider, Horse, Bull, Barrel, Pickup Rider</p>
+    <p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints</p>
 
-  <h3>Resume & Certificate</h3>
-  <a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/Resume%20Hillary%20Clarence%20Kusumo.pdf" target="_blank" class="button">View Resume</a>
-  <a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/QA_Certificate%20of%20completion_Oct_2022-13%20(2).pdf" target="_blank" class="button">View Certificate</a>
+    <h3>Annotation Examples</h3>
+    <img src="Image%20Folder/0.png" alt="Screenshot 0">
+    <img src="Image%20Folder/1.png" alt="Screenshot 1">
+    <img src="Image%20Folder/2.png" alt="Screenshot 2">
+
+    <h3>Annotation Workflow Video</h3>
+    <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank" class="button">Watch Workflow Video</a>
+
+    <h3>Resume & Certificate</h3>
+    <a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/Resume%20Hillary%20Clarence%20Kusumo.pdf" target="_blank" class="button">View Resume</a>
+    <a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/QA_Certificate%20of%20completion_Oct_2022-13%20(2).pdf" target="_blank" class="button">View Certificate</a>
+  </div>
 </div>
 
 </div>
 
 <script>
-  // Network Canvas Animation
   const canvas = document.getElementById('networkCanvas');
   const ctx = canvas.getContext('2d');
   let width = canvas.width = window.innerWidth;
