@@ -13,77 +13,118 @@ body {
   color: #fff;
 }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
+/* FULL SCREEN GRID */
 .container {
-  padding: 40px;
+  height: 100vh;
+  padding: 20px;
 }
 
 .grid {
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 20px;
 }
 
+/* CARDS */
 .card {
   background: #1e293b;
-  border-radius: 14px;
-  overflow: hidden;
+  border-radius: 16px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  transition: 0.3s;
 }
 
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* THUMBNAILS */
 .thumbnail {
-  height: 140px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.eval { background: linear-gradient(#38bdf8,#0ea5e9); }
-.annot { background: linear-gradient(#22c55e,#16a34a); }
-.resume { background: linear-gradient(#64748b,#334155); }
-.cert { background: linear-gradient(#f43f5e,#be123c); }
+.eval { background: #38bdf8; }
+.annot { background: #22c55e; }
+.resume { background: #64748b; }
+.cert { background: #f43f5e; }
 
-.card-content { padding: 15px; }
+/* TEXT */
+h2 {
+  margin: 0 0 10px 0;
+}
 
-/* Modal */
+p {
+  color: #cbd5f5;
+  line-height: 1.5;
+}
+
+/* MODAL */
 .modal {
   display: none;
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.85);
-  overflow-y: auto;
+  background: #0f172a;
+  z-index: 1000;
 }
 
 .modal-content {
-  background: #0f172a;
-  margin: 40px auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 1100px;
-  border-radius: 10px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 30px;
 }
 
 .close {
-  float: right;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #38bdf8;
+  color: black;
+  padding: 10px 15px;
   cursor: pointer;
+  border-radius: 6px;
 }
 
-/* Tabs */
-.tabs { display: flex; gap: 10px; margin: 20px 0; }
-.tab { padding: 10px; background: #334155; cursor: pointer; border-radius: 6px; }
-.tab.active { background: #38bdf8; color: black; }
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
 
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+.tab {
+  padding: 10px;
+  background: #334155;
+  cursor: pointer;
+  border-radius: 6px;
+}
 
+.tab.active {
+  background: #38bdf8;
+  color: black;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* VIDEO */
 .video-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -95,52 +136,73 @@ iframe {
   height: 300px;
   border-radius: 10px;
 }
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td, th {
+  border: 1px solid #334155;
+  padding: 10px;
+}
+
+th {
+  background: #334155;
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
 <div class="container">
 <div class="grid">
 
+<!-- Evaluation -->
 <div class="card" onclick="openModal('evaluationModal')">
 <div class="thumbnail eval">EVALUATION</div>
-<div class="card-content"><h3>Evaluation</h3></div>
+<h2>Evaluation</h2>
+<p>Video comparison tasks. Audio and visual quality checks. Detailed scoring and final selection based on realism, motion, and noise.</p>
 </div>
 
+<!-- Annotation -->
 <div class="card" onclick="openModal('annotationModal')">
 <div class="thumbnail annot">ANNOTATION</div>
-<div class="card-content"><h3>Annotation</h3></div>
+<h2>Annotation</h2>
+<p>CVAT projects. Bounding boxes, segmentation, and cuboids. Real work from autonomous driving, retail, and drone datasets.</p>
 </div>
 
+<!-- Resume -->
 <div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view')">
 <div class="thumbnail resume">RESUME</div>
-<div class="card-content"><h3>Resume</h3></div>
+<h2>Resume</h2>
+<p>Work history, roles, and achievements. Focus on data annotation, QA, and productivity performance.</p>
 </div>
 
+<!-- Certificates -->
 <div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing')">
 <div class="thumbnail cert">CERTIFICATES</div>
-<div class="card-content"><h3>Certificates</h3></div>
+<h2>Certificates</h2>
+<p>Proof of training and achievements. Includes certifications and recognition from annotation and AI-related programs.</p>
 </div>
 
 </div>
 </div>
 
-<!-- Evaluation -->
+<!-- Evaluation Modal -->
 <div id="evaluationModal" class="modal">
+<div class="close" onclick="closeModal('evaluationModal')">Close</div>
 <div class="modal-content">
-<span class="close" onclick="closeModal('evaluationModal')">X</span>
 
-<h2>Evaluation</h2>
+<h1>Video Evaluation</h1>
 
 <div class="tabs">
 <div class="tab active" onclick="openTab(event,'videos')">Videos</div>
 <div class="tab" onclick="openTab(event,'analysis')">Analysis</div>
-<div class="tab" onclick="openTab(event,'image')">Image Bursts</div>
-<div class="tab" onclick="openTab(event,'video')">Video Bursts</div>
-<div class="tab" onclick="openTab(event,'modules')">Modules</div>
+<div class="tab" onclick="openTab(event,'scoring')">Scoring</div>
+<div class="tab" onclick="openTab(event,'modules')">Guidelines</div>
 <div class="tab" onclick="openTab(event,'result')">Result</div>
 </div>
 
@@ -152,60 +214,41 @@ iframe {
 </div>
 
 <div id="analysis" class="tab-content">
-<p>Video 1 shows better motion, cleaner audio, and realistic break.</p>
-<p>Video 2 shows inconsistencies and more noise.</p>
+<p>Video 1 shows consistent motion, stable interaction, and clean audio.</p>
+<p>Video 2 shows motion breaks, noise artifacts, and weaker realism.</p>
 </div>
 
-<div id="image" class="tab-content">
-<p>Review defects, edits, and instruction accuracy.</p>
-</div>
-
-<div id="video" class="tab-content">
-<p>Check motion, audio issues, and rendering artifacts.</p>
+<div id="scoring" class="tab-content">
+<table>
+<tr><th>Criteria</th><th>Video 1</th><th>Video 2</th></tr>
+<tr><td>Motion</td><td>9</td><td>6</td></tr>
+<tr><td>Audio</td><td>9</td><td>6</td></tr>
+<tr><td>Visual</td><td>9</td><td>7</td></tr>
+<tr><td>Realism</td><td>9</td><td>6</td></tr>
+</table>
 </div>
 
 <div id="modules" class="tab-content">
-<pre style="white-space: pre-wrap; font-size:12px;">
-Video Comparison Update Log
-
-QN if:
-Black screen
-Responses differ heavily
-
-Audio Issues:
-Hiss, buzz, ambient noise, clipping
-
-Visual Issues:
-Grain, thermal noise, banding
-
-Reminder:
-Select video with less noise
-
-Check deformities:
-Distorted faces
-Unnatural movement
-</pre>
+<p>Select video with less noise. Check audio and visual issues. Check deformities and realism.</p>
 </div>
 
 <div id="result" class="tab-content">
-<h3>Best Video: Video 1</h3>
-<p>Better motion, cleaner audio, realistic break.</p>
+<h2>Selected Video: Video 1</h2>
+<p>Higher scores across all categories.</p>
 </div>
 
 </div>
 </div>
 
-<!-- Annotation -->
+<!-- Annotation Modal -->
 <div id="annotationModal" class="modal">
+<div class="close" onclick="closeModal('annotationModal')">Close</div>
 <div class="modal-content">
-<span class="close" onclick="closeModal('annotationModal')">X</span>
 
-<h2>Annotation</h2>
-<ul>
-<li>Sama. Autonomous driving. Cuboids</li>
-<li>CloudFactory. Retail labeling</li>
-<li>Drone segmentation</li>
-</ul>
+<h1>Annotation Work</h1>
+
+<p>Sama. Autonomous driving. Cuboids.</p>
+<p>CloudFactory. Retail labeling.</p>
 
 </div>
 </div>
@@ -222,27 +265,6 @@ for(let i=0;i<b.length;i++){b[i].classList.remove("active");}
 document.getElementById(name).classList.add("active");
 evt.currentTarget.classList.add("active");
 }
-
-/* background */
-const c=document.getElementById("bg");
-const x=c.getContext("2d");
-c.width=window.innerWidth;
-c.height=window.innerHeight;
-
-let n=[];
-for(let i=0;i<60;i++){
-n.push({x:Math.random()*c.width,y:Math.random()*c.height,dx:Math.random()-0.5,dy:Math.random()-0.5});
-}
-
-function draw(){
-x.clearRect(0,0,c.width,c.height);
-n.forEach(a=>{
-a.x+=a.dx;a.y+=a.dy;
-x.beginPath();x.arc(a.x,a.y,2,0,6.28);x.fillStyle="#38bdf8";x.fill();
-});
-requestAnimationFrame(draw);
-}
-draw();
 </script>
 
 </body>
