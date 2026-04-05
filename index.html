@@ -3,303 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Portfolio - Hillary Kusumo</title>
 <style>
   body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: #1e293b;
-    color: #fff;
+    font-size: 18px;
+    margin: 0;
+    color: #eee;
+    overflow-x: hidden;
+    position: relative;
   }
 
-  .container {
+  #background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -2;
+    background-color: #111;
+  }
+
+  header {
+    background-color: rgba(34,34,34,0.9);
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+  }
+
+  .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 20px;
     padding: 20px;
-    height: 100vh;
-    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
   }
 
   .card {
-    background: #2e3b4e;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(26,26,26,0.9);
     padding: 20px;
+    border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s;
-    text-align: center;
   }
 
-  .card:hover {
-    transform: scale(1.05);
-  }
-
-  .card h2 {
-    margin: 10px 0 5px;
-  }
-
-  .card p {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  .circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+  .card:hover { transform: scale(1.05); }
+  .card h3 { margin-top: 0; font-size: 1.5em; }
+  .thumbnail {
+    width: 100%; height: 150px;
+    background-color: #333;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    color: #aaa;
+    font-size: 1.2em;
   }
 
-  .blue { background: #38bdf8; }
-  .green { background: #22c55e; }
-  .grey { background: #64748b; }
-  .red { background: #ef4444; }
-
-  /* Modal styles */
   .modal {
     display: none;
     position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: rgba(0,0,0,0.9);
-    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
 
   .modal-content {
-    position: relative;
-    background: #1e293b;
-    margin: 40px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 1200px;
-    border-radius: 12px;
+    background-color: #222;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-height: 80%;
     overflow-y: auto;
-    max-height: 90vh;
+    font-size: 20px;
   }
 
-  .modal .close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background: #0ea5e9;
-    padding: 5px 10px;
+  .close-btn {
+    background-color: #ff4444;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 18px;
     border-radius: 5px;
+    cursor: pointer;
+    float: right;
   }
+
+  iframe { width: 100%; height: 400px; border: none; margin-bottom: 20px; }
+
+  h2 { font-size: 2em; margin-bottom: 10px; }
+  p { font-size: 1.2em; line-height: 1.5; }
 
   .tabs {
     display: flex;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
   }
 
   .tab {
-    background: #334155;
-    padding: 10px 15px;
-    margin-right: 5px;
+    background-color: #333;
+    padding: 10px 20px;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s, background-color 0.3s;
   }
 
+  .tab:hover { background-color: #444; }
+
+  /* Active tab with pulsing glow */
   .tab.active {
-    background: #0ea5e9;
+    background-color: #555;
+    animation: glowPulse 1.5s infinite alternate;
   }
 
-  .tab-content {
-    display: none;
+  @keyframes glowPulse {
+    0% { box-shadow: 0 0 5px #66ccff; }
+    50% { box-shadow: 0 0 20px #66ccff; }
+    100% { box-shadow: 0 0 5px #66ccff; }
   }
 
-  .tab-content.active {
-    display: block;
-  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 
-  video {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-  }
-
-  pre {
-    background: #334155;
-    padding: 15px;
-    border-radius: 8px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 15px;
-  }
-
-  th, td {
-    border: 1px solid #64748b;
-    padding: 8px;
-    text-align: center;
-  }
-
-  th {
-    background: #0ea5e9;
-  }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- Evaluation Card -->
+<canvas id="background"></canvas>
+
+<header>Hillary Kusumo Portfolio</header>
+
+<div class="grid-container">
   <div class="card" onclick="openModal('evaluationModal')">
-    <div class="circle blue">🎬</div>
-    <h2>Evaluation</h2>
-    <p>Compare videos, review audio/visual quality, motion, realism, and score each aspect in detail.</p>
+    <div class="thumbnail">Evaluation</div>
+    <h3>Video Evaluation</h3>
   </div>
 
-  <!-- Annotation Card -->
-  <div class="card" onclick="openModal('annotationModal')">
-    <div class="circle green">🖊️</div>
-    <h2>Annotation</h2>
-    <p>CVAT projects including bounding boxes, segmentation, and cuboids. Screenshots and labeling explanations included.</p>
+  <div class="card">
+    <div class="thumbnail">Image</div>
+    <h3>Image Bursts</h3>
   </div>
 
-  <!-- Resume Card -->
-  <div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view','_blank')">
-    <div class="circle grey">📄</div>
-    <h2>Resume</h2>
-    <p>Complete work experience and achievements in data annotation, QA, and AI-related projects.</p>
+  <div class="card">
+    <div class="thumbnail">Video</div>
+    <h3>Video Bursts</h3>
   </div>
 
-  <!-- Certificates Card -->
-  <div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4yttNUr652OtC/view','_blank')">
-    <div class="circle red">🏆</div>
-    <h2>Certificates</h2>
-    <p>Training certificates and recognition for performance in annotation and AI projects.</p>
+  <div class="card">
+    <div class="thumbnail">Modules</div>
+    <h3>Modules</h3>
+  </div>
+
+  <div class="card">
+    <div class="thumbnail">Resume</div>
+    <h3><a href="https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view" target="_blank" style="color:#eee; text-decoration:none;">Resume</a></h3>
+  </div>
+
+  <div class="card">
+    <div class="thumbnail">Certificate</div>
+    <h3>Certificate</h3>
   </div>
 </div>
 
-<!-- Evaluation Modal -->
-<div id="evaluationModal" class="modal">
-  <div class="close" onclick="closeModal('evaluationModal')">Close</div>
+<div class="modal" id="evaluationModal">
   <div class="modal-content">
-    <h1>Video Evaluation</h1>
+    <button class="close-btn" onclick="closeModal('evaluationModal')">Close</button>
+    <h2>Video Evaluation</h2>
+
     <div class="tabs">
       <div class="tab active" onclick="openTab(event,'videos')">Videos</div>
       <div class="tab" onclick="openTab(event,'analysis')">Analysis</div>
       <div class="tab" onclick="openTab(event,'scoring')">Scoring</div>
-      <div class="tab" onclick="openTab(event,'modules')">Guidelines</div>
+      <div class="tab" onclick="openTab(event,'guidelines')">Guidelines</div>
       <div class="tab" onclick="openTab(event,'result')">Result</div>
     </div>
 
     <div id="videos" class="tab-content active">
-      <div class="video-grid">
-        <video controls>
-          <source src="https://drive.google.com/uc?export=download&id=1U7mZLohpIS313wj7bwdaYo0znOFfQM5R" type="video/mp4">
-        </video>
-        <video controls>
-          <source src="https://drive.google.com/uc?export=download&id=1CjDk7jUuK7KH3Ulovd7SBPfKi8LXm5Is" type="video/mp4">
-        </video>
-      </div>
-      <p><strong>Video 1:</strong> Shows realistic globe break, synchronized audio, smooth motion, artifact-free visuals.</p>
-      <p><strong>Video 2:</strong> Visible artifacts, minor motion issues, audio inconsistencies. Globe break less realistic.</p>
+      <h3>Videos</h3>
+      <p>This tab contains all video materials you are reviewing. You can watch each video, observe details, and note issues. The goal is to compare different versions, detect errors, and highlight improvements in editing, animation, and audio.</p>
+      <iframe src="https://player.vimeo.com/video/1180209118" allowfullscreen></iframe>
+      <iframe src="https://player.vimeo.com/video/1180209128" allowfullscreen></iframe>
     </div>
 
     <div id="analysis" class="tab-content">
-      <h2>Analysis</h2>
-      <ul>
-        <li><strong>Motion:</strong> Video 1 is smooth and natural. Video 2 has slight jitter and pauses.</li>
-        <li><strong>Audio:</strong> Video 1 is clear, synchronized. Video 2 has hiss, buzz, and desync.</li>
-        <li><strong>Visual Quality:</strong> Video 1 is artifact-free. Video 2 shows grain and minor distortions.</li>
-        <li><strong>Realism:</strong> Video 1 interactions are natural. Video 2 interactions appear less realistic.</li>
-      </ul>
+      <h3>Analysis</h3>
+      <p>This section breaks down what you observe in each video. You check for motion accuracy, visual continuity, and audio synchronization. You document errors, inconsistencies, or areas needing improvement. This helps maintain consistent quality across videos.</p>
+      <p>Analysis also identifies patterns in mistakes, tracks improvements, and ensures alignment with project standards. Notes here form the foundation for objective scoring.</p>
     </div>
 
     <div id="scoring" class="tab-content">
-      <h2>Scoring</h2>
-      <table>
-        <tr><th>Criteria</th><th>Video 1</th><th>Video 2</th></tr>
-        <tr><td>Motion</td><td>9</td><td>6</td></tr>
-        <tr><td>Audio</td><td>9</td><td>6</td></tr>
-        <tr><td>Visual</td><td>9</td><td>7</td></tr>
-        <tr><td>Realism</td><td>9</td><td>6</td></tr>
-      </table>
+      <h3>Scoring</h3>
+      <p>Scoring converts observations into measurable metrics. Each video is rated on realism, accuracy, audio-visual sync, and overall execution. Scores help prioritize corrections, compare versions, and maintain objectivity. They also provide performance feedback for the team.</p>
     </div>
 
-    <div id="modules" class="tab-content">
-      <h2>Guidelines</h2>
-      <pre style="white-space: pre-wrap;">
-Video Comparison Update Log
-- QN tasks with black screen or different responses.
-- Audio issues: hiss, buzz, clipping, ambient noise.
-- Visual issues: grain, thermal noise, read noise, amplification artifacts.
-- Penalize egregious deformities: unnatural limb/face movement or objects passing through humans.
-- Select video with least audio/visual noise.
-      </pre>
+    <div id="guidelines" class="tab-content">
+      <h3>Guidelines</h3>
+      <p>This tab lists rules and standards for evaluation. It defines what constitutes acceptable quality, errors, and variations. Following guidelines ensures all evaluators are consistent and scoring remains uniform.</p>
+      <p>Guidelines also serve as a reference to avoid subjectivity, ensuring every evaluation aligns with project goals and quality expectations.</p>
     </div>
 
     <div id="result" class="tab-content">
-      <h2>Selected Video: Video 1</h2>
-      <p>Video 1 is best. Motion is realistic, globe break looks natural, audio synchronized, visuals artifact-free. Video 2 has artifacts and minor desync issues.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Annotation Modal -->
-<div id="annotationModal" class="modal">
-  <div class="close" onclick="closeModal('annotationModal')">Close</div>
-  <div class="modal-content">
-    <h1>Annotation Projects</h1>
-    <div class="tabs">
-      <div class="tab active" onclick="openTab(event,'cvat')">CVAT Projects</div>
-      <div class="tab" onclick="openTab(event,'cuboids')">Cuboids</div>
-      <div class="tab" onclick="openTab(event,'examples')">Examples</div>
-    </div>
-
-    <div id="cvat" class="tab-content active">
-      <h2>CVAT Projects</h2>
-      <p>Bounding boxes, segmentation, keypoints, and labeling projects. Screenshots with detailed explanations included.</p>
-    </div>
-
-    <div id="cuboids" class="tab-content">
-      <h2>Cuboids</h2>
-      <p>3D object annotation with cuboid labels for autonomous driving and drone footage.</p>
-    </div>
-
-    <div id="examples" class="tab-content">
-      <h2>Examples</h2>
-      <p>Screenshots of annotated images, videos, and segmentation masks with notes explaining labeling decisions.</p>
+      <h3>Result</h3>
+      <p>This section summarizes evaluation outcomes. It includes total scores, feedback, and pass/fail indicators. Results are exportable for reporting and decision-making. This tab consolidates videos, analysis, scoring, and guidelines into a final actionable outcome.</p>
     </div>
   </div>
 </div>
 
 <script>
-function openModal(id) {
-  document.getElementById(id).style.display = 'block';
-}
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-}
-
-function openTab(evt, tabName) {
-  let modal = evt.currentTarget.closest('.modal');
-  let tabContents = modal.querySelectorAll('.tab-content');
-  tabContents.forEach(tc => tc.classList.remove('active'));
-  let tabs = modal.querySelectorAll('.tab');
-  tabs.forEach(t => t.classList.remove('active'));
-  modal.querySelector('#'+tabName).classList.add('active');
+function openModal(id){document.getElementById(id).style.display='flex';}
+function closeModal(id){document.getElementById(id).style.display='none';}
+function openTab(evt,tabName){
+  const tabContents=document.getElementsByClassName('tab-content');
+  for(let i=0;i<tabContents.length;i++) tabContents[i].classList.remove('active');
+  const tabs=document.getElementsByClassName('tab');
+  for(let i=0;i<tabs.length;i++) tabs[i].classList.remove('active');
+  document.getElementById(tabName).classList.add('active');
   evt.currentTarget.classList.add('active');
 }
+
+// Network nodes + cuboids background
+const canvas=document.getElementById('background');
+const ctx=canvas.getContext('2d');
+let nodes=[],cuboids=[];
+const nodeCount=50,cuboidCount=20;
+
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+window.addEventListener('resize',resizeCanvas);
+resizeCanvas();
+
+class Node{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;this.radius=2+Math.random()*3;}move(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width)this.vx*=-1;if(this.y<0||this.y>canvas.height)this.vy*=-1;}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle='#66ccff';ctx.fill();}}
+
+class Cuboid{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.z=Math.random()*200;this.size=10+Math.random()*20;this.vx=(Math.random()-0.5)*0.2;this.vy=(Math.random()-0.5)*0.2;this.vz=(Math.random()-0.5)*0.2;}move(){this.x+=this.vx;this.y+=this.vy;this.z+=this.vz;if(this.x<0||this.x>canvas.width)this.vx*=-1;if(this.y<0||this.y>canvas.height)this.vy*=-1;if(this.z<0||this.z>200)this.vz*=-1;}draw(){const shade=100+this.z/2;ctx.fillStyle=`rgba(${shade},${shade},255,0.7)`;ctx.fillRect(this.x,this.y,this.size,this.size);}}
+
+function connectNodes(){for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x;const dy=nodes[i].y-nodes[j].y;const dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle='rgba(102,204,255,'+(1-dist/150)+')';ctx.lineWidth=1;ctx.stroke();}}}}
+
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);nodes.forEach(n=>{n.move();n.draw();});connectNodes();cuboids.forEach(c=>{c.move();c.draw();});requestAnimationFrame(animate);}
+
+for(let i=0;i<nodeCount;i++) nodes.push(new Node());
+for(let i=0;i<cuboidCount;i++) cuboids.push(new Cuboid());
+animate();
 </script>
 
 </body>
