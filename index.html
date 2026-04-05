@@ -13,18 +13,45 @@ body {
     color: #333;
     line-height: 1.6;
 }
+
 .container {
     max-width: 900px;
     margin: auto;
     padding: 20px;
 }
-h1 { text-align: center; color: #2c3e50; }
-h2 { color: #34495e; border-bottom: 2px solid #2980b9; padding-bottom: 5px; }
-h3 { color: #2980b9; }
-p, ul { margin-bottom: 15px; }
-ul { padding-left: 20px; }
-a { color: #2980b9; text-decoration: none; }
-a:hover { text-decoration: underline; }
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 5px;
+}
+
+h3 {
+    color: #2980b9;
+}
+
+p, ul {
+    margin-bottom: 15px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .section {
     background-color: #fff;
     padding: 20px;
@@ -32,33 +59,97 @@ a:hover { text-decoration: underline; }
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
-img { max-width: 100%; display: block; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-.contact-info p { margin: 5px 0; }
-.button {
-    display:inline-block; padding:10px 20px; color:white; text-decoration:none; border-radius:5px; margin-top:10px;
+
+img {
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.button {
+    display:inline-block;
+    padding:10px 20px;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    margin-top:10px;
+}
+
 .button-blue { background-color:#2980b9; }
 .button-green { background-color:#27ae60; }
-.card { flex: 1 1 250px; background-color: #ecf0f1; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; }
-.card-container { display: flex; flex-wrap: wrap; gap: 20px; }
+
+.card {
+    flex: 1 1 250px;
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 /* Overlay Styles */
 .overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: #f4f4f9; overflow-y: auto; display: none;
-    z-index: 1000; padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f9;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    padding: 20px;
 }
-.overlay.active { display: block; }
+
+.overlay.active {
+    display: block;
+}
+
 .overlay .close-btn {
-    position: fixed; top: 20px; right: 30px; font-size: 18px;
-    background: #2980b9; border: none; color: #fff;
-    padding: 8px 12px; border-radius: 5px; cursor: pointer; z-index: 1001;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 18px;
+    background: #2980b9;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
 }
-.warning { color: #ff3b3b; font-weight: bold; }
-table { width: 100%; border-collapse: collapse; margin-top: 15px; border-radius: 8px; overflow: hidden; }
-th, td { padding: 12px; text-align: left; border-bottom: 1px solid #333; }
-th { background: #333; color: #f5f5f5; }
-tr:hover { background: rgba(0,0,0,0.05); }
-iframe { width: 100%; height: 400px; border-radius: 12px; margin-top: 15px; border: 2px solid #222; }
+
+/* Grid for annotation images */
+.annotation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.annotation-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
 </style>
 </head>
 <body>
@@ -74,11 +165,11 @@ Data Annotator | AI Trainer | Quality Analyst | Computer Vision & NLP | GEN AI |
 <div class="section">
 <h2>About Me</h2>
 <p>
-Data annotator with over 5 years of experience on image, video, and text annotation projects.  
-Worked with companies including Sama, CloudFactory, Remotask, Appen, and Micro 1.  
-Proficient in tools such as CVAT, LabelImg, and custom annotation platforms.  
+Data annotator with over 5 years of experience working on image, video, and text annotation projects.  
+Worked with companies such as Sama, CloudFactory, Remotask, Appen, and Micro 1.  
+Proficient in tools including CVAT, LabelImg, and custom annotation platforms.  
 Projects include autonomous driving video annotation, retail shelf labeling, agricultural drone footage segmentation, rodeo sports video annotation, and prompt reviewing for Micro 1.  
-Skilled in bounding boxes, polygon segmentation, keypoints, and QA of annotated data.
+Skilled in bounding boxes, polygon segmentation, keypoints, and quality assurance of annotated data.
 </p>
 </div>
 
@@ -92,12 +183,6 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and QA of annotated 
     <p>Click to view full annotation portfolio</p>
   </div>
 
-  <!-- Evaluation Card -->
-  <div class="card" id="evaluationCard">
-    <h3>Evaluation</h3>
-    <p>Click to view evaluation workflow</p>
-  </div>
-
   <!-- Resume Card -->
   <div class="card">
     <h3>Resume</h3>
@@ -109,7 +194,13 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and QA of annotated 
   <div class="card">
     <h3>QA Certificate</h3>
     <p>Certificate of Completion, Oct 2022.</p>
-    <a href="https://drive.google.com/file/d/1VtiE6jcfa3kaaAVhJ_mWvuZwEw8RtdUD/view?usp=sharing" target="_blank" class="button button-green">View Certificate</a>
+    <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button button-green">View Certificate</a>
+  </div>
+
+  <!-- Evaluation Card -->
+  <div class="card" id="evaluationCard">
+    <h3>Evaluation</h3>
+    <p>Click to view evaluation workflow</p>
   </div>
 
 </div>
@@ -126,7 +217,7 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and QA of annotated 
 
 <!-- Overlay for Annotation -->
 <div class="overlay" id="annotationOverlay">
-  <button class="close-btn" id="closeOverlay">Close</button>
+  <button class="close-btn" id="closeAnnotationOverlay">Close</button>
   <div class="container">
     <h2>Project: Rodeo Video Annotation</h2>
     <p><strong>Tool:</strong> CVAT</p>
@@ -147,16 +238,18 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and QA of annotated 
     <p>Frames labeled from rodeo competition videos. Annotation includes rider pose keypoints and horse or bull body keypoints.</p>
 
     <h3>Annotation Examples</h3>
-    <img src="Image%20Folder/0.png" alt="Screenshot 0">
-    <img src="Image%20Folder/1.png" alt="Screenshot 1">
-    <img src="Image%20Folder/2.png" alt="Screenshot 2">
-    <img src="Image%20Folder/3.png" alt="Screenshot 3">
-    <img src="Image%20Folder/4.png" alt="Screenshot 4">
-    <img src="Image%20Folder/5.png" alt="Screenshot 5">
-    <img src="Image%20Folder/6.png" alt="Screenshot 6">
-    <img src="Image%20Folder/7.png" alt="Screenshot 7">
-    <img src="Image%20Folder/8.png" alt="Screenshot 8">
-    <img src="Image%20Folder/9.png" alt="Screenshot 9">
+    <div class="annotation-grid">
+      <img src="Image%20Folder/0.png" alt="Screenshot 0">
+      <img src="Image%20Folder/1.png" alt="Screenshot 1">
+      <img src="Image%20Folder/2.png" alt="Screenshot 2">
+      <img src="Image%20Folder/3.png" alt="Screenshot 3">
+      <img src="Image%20Folder/4.png" alt="Screenshot 4">
+      <img src="Image%20Folder/5.png" alt="Screenshot 5">
+      <img src="Image%20Folder/6.png" alt="Screenshot 6">
+      <img src="Image%20Folder/7.png" alt="Screenshot 7">
+      <img src="Image%20Folder/8.png" alt="Screenshot 8">
+      <img src="Image%20Folder/9.png" alt="Screenshot 9">
+    </div>
 
     <h3>Annotation Workflow Video</h3>
     <p>
@@ -171,76 +264,56 @@ Skilled in bounding boxes, polygon segmentation, keypoints, and QA of annotated 
 <div class="overlay" id="evaluationOverlay">
   <button class="close-btn" id="closeEvaluationOverlay">Close</button>
   <div class="container">
-    <h2>Evaluation Workflow</h2>
-    
-    <section>
-      <h3>Overview</h3>
-      <p>Structured evaluation of images and videos. Tasks follow rubrics, modules, and guidelines.</p>
-    </section>
-    
-    <section>
-      <h3>Rubric</h3>
-      <table>
-        <tr><th>Criterion</th><th>Description</th><th>Scale</th></tr>
-        <tr><td>Instruction</td><td>Follows prompt accurately</td><td>1–5</td></tr>
-        <tr><td>Motion</td><td>Smoothness and consistency</td><td>1–5</td></tr>
-        <tr><td>Audio</td><td>Alignment and clarity</td><td>1–5</td></tr>
-        <tr><td>Composition</td><td>Framing and balance</td><td>1–5</td></tr>
-      </table>
-    </section>
+    <h2>Evaluation Portfolio</h2>
+    <p>This portfolio demonstrates structured evaluation of visual content. It covers both images and videos using defined rubrics, modules, and guidelines.</p>
 
-    <section>
-      <h3>Video Examples</h3>
-      <p>Video 1</p>
-      <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" allowfullscreen></iframe>
-      <p>Video 2</p>
-      <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" allowfullscreen></iframe>
-    </section>
+    <h3>Rubric Framework</h3>
+    <table>
+      <tr><th>Criterion</th><th>Description</th><th>Scale</th></tr>
+      <tr><td>Instruction</td><td>Follows prompt accurately</td><td>1–5</td></tr>
+      <tr><td>Motion</td><td>Smoothness and consistency</td><td>1–5</td></tr>
+      <tr><td>Audio</td><td>Alignment and clarity</td><td>1–5</td></tr>
+      <tr><td>Composition</td><td>Framing and balance</td><td>1–5</td></tr>
+    </table>
 
-    <section>
-      <h3>Evaluation Modules</h3>
-      <ul>
-        <li>Motion Analysis: detects unnatural transitions</li>
-        <li>Audio Sync: checks alignment and clarity</li>
-        <li>Composition Check: visual framing and balance</li>
-        <li>Instruction Compliance: prompt adherence</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Image Bursts</h3>
-      <ul>
-        <li>Review Defects Document</li>
-        <li>Follow Image Edit Guidelines and Image Generation Guidelines</li>
-        <li class="warning">Avoid "About the same"; select overall best carefully</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Video Bursts</h3>
-      <ul>
-        <li>Follow Video Edit Guidelines and Video Generation Guidelines</li>
-        <li>Consult FAQ for common questions</li>
-        <li class="warning">Focus on instruction adherence, motion, audio, and visual quality</li>
-      </ul>
-    </section>
+    <h3>Evaluation Modules</h3>
+    <ul>
+      <li><strong>Motion Analysis:</strong> Detects movement inconsistencies and unnatural transitions.</li>
+      <li><strong>Audio Sync:</strong> Checks alignment and clarity of sound.</li>
+      <li><strong>Composition Check:</strong> Assesses visual framing and balance.</li>
+      <li><strong>Instruction Compliance:</strong> Confirms prompt adherence.</li>
+    </ul>
   </div>
 </div>
 
 <script>
 const annotationCard = document.getElementById('annotationCard');
-const overlay = document.getElementById('annotationOverlay');
-const closeBtn = document.getElementById('closeOverlay');
-annotationCard.addEventListener('click', () => { overlay.classList.add('active'); });
-closeBtn.addEventListener('click', () => { overlay.classList.remove('active'); });
-overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('active'); });
+const annotationOverlay = document.getElementById('annotationOverlay');
+const closeAnnotation = document.getElementById('closeAnnotationOverlay');
+
+annotationCard.addEventListener('click', () => {
+    annotationOverlay.classList.add('active');
+});
+closeAnnotation.addEventListener('click', () => {
+    annotationOverlay.classList.remove('active');
+});
+annotationOverlay.addEventListener('click', (e) => {
+    if(e.target === annotationOverlay) annotationOverlay.classList.remove('active');
+});
 
 const evaluationCard = document.getElementById('evaluationCard');
 const evaluationOverlay = document.getElementById('evaluationOverlay');
-const closeEvaluationBtn = document.getElementById('closeEvaluationOverlay');
-evaluationCard.addEventListener('click', () => { evaluationOverlay.classList.add('active'); });
-closeEvaluationBtn.addEventListener('click', () => { evaluationOverlay.classList.remove('active'); });
-evaluationOverlay.addEventListener('click', (e) => { if(e.target === evaluationOverlay) evaluationOverlay.classList.remove('active'); });
+const closeEvaluation = document.getElementById('closeEvaluationOverlay');
+
+evaluationCard.addEventListener('click', () => {
+    evaluationOverlay.classList.add('active');
+});
+closeEvaluation.addEventListener('click', () => {
+    evaluationOverlay.classList.remove('active');
+});
+evaluationOverlay.addEventListener('click', (e) => {
+    if(e.target === evaluationOverlay) evaluationOverlay.classList.remove('active');
+});
 </script>
 
 </body>
