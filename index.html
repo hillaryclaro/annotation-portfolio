@@ -31,11 +31,13 @@ header p a:hover { background: #ff6b6b; }
 
 .container { max-width: 1200px; margin: auto; padding: 20px; }
 
+/* Grid for Evaluation & Annotation */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .card {
@@ -69,10 +71,27 @@ header p a:hover { background: #ff6b6b; }
 }
 .button:hover { background: #ff6b6b; }
 
+/* Resume & Certificate Vertical Side-by-Side */
+.card-horizontal-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
+}
+.card-horizontal-container .card {
+    flex: 1 1 400px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
 footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); color: #ccc; }
 
 @media screen and (max-width: 1000px) {
-    .card { flex: 1 1 100%; max-width: 100%; }
+    .card-container { flex-direction: column; align-items: center; }
+    .card-horizontal-container { flex-direction: column; align-items: center; }
+    .card, .card-horizontal-container .card { max-width: 100%; }
 }
 </style>
 </head>
@@ -87,6 +106,8 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
 </header>
 
 <div class="container">
+
+<!-- Evaluation & Annotation Cards -->
 <div class="card-container">
 
 <!-- Evaluation Work -->
@@ -96,17 +117,8 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
     <h3>Case Studies</h3>
     <p>Video 1</p>
     <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
-    <a href="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/view" target="_blank" class="button">Open Video 1</a>
     <p>Video 2</p>
     <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
-    <a href="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view" target="_blank" class="button">Open Video 2</a>
-    <h3>Evaluation Modules</h3>
-    <ul>
-        <li>Motion Analysis: Detects inconsistencies and unnatural transitions.</li>
-        <li>Audio Sync: Checks alignment and clarity of sound.</li>
-        <li>Composition Check: Assesses visual framing and balance.</li>
-        <li>Instruction Compliance: Confirms prompt adherence.</li>
-    </ul>
 </div>
 
 <!-- Annotation Work -->
@@ -122,24 +134,28 @@ footer { text-align: center; padding: 20px; background: rgba(30,30,30,0.9); colo
     <img src="Image%20Folder/1.png" alt="Screenshot 1">
     <img src="Image%20Folder/2.png" alt="Screenshot 2">
     <h3>Annotation Workflow Video</h3>
-    <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank" class="button">Watch Workflow Video</a>
+    <iframe src="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/preview" frameborder="0" allowfullscreen></iframe>
 </div>
 
-<!-- Resume Card -->
+</div>
+
+<!-- Resume & Certificate Cards Side-by-Side Vertically -->
+<div class="card-horizontal-container">
+
 <div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view','_blank')">
     <h2>Resume</h2>
     <p>Download or view my professional resume.</p>
     <a href="https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view" target="_blank" class="button">View Resume</a>
 </div>
 
-<!-- Certificate Card -->
 <div class="card" onclick="window.open('https://drive.google.com/file/d/1VtiE6jcfa3kaaAVhJ_mWvuZwEw8RtdUD/preview','_blank')">
     <h2>Certificate</h2>
     <p>QA Certificate of Completion, Oct 2022.</p>
     <a href="https://drive.google.com/file/d/1VtiE6jcfa3kaaAVhJ_mWvuZwEw8RtdUD/preview" target="_blank" class="button">View Certificate</a>
 </div>
 
-</div> <!-- card-container -->
+</div>
+
 </div> <!-- container -->
 
 <footer>
