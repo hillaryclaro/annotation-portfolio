@@ -32,7 +32,7 @@
     flex-direction: column;
     justify-content: space-between;
     color: #fff;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
     cursor: pointer;
     transition: transform 0.2s;
@@ -47,6 +47,13 @@
     background: #555;
     border-radius: 8px;
     margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .content {
@@ -62,28 +69,36 @@
 <body>
   <div class="grid">
     <div class="card">
-      <div class="thumbnail">Thumbnail 1</div>
+      <div class="thumbnail">
+        <img src="204a5955-0573-45d2-b0a6-fbce245b603a.png" alt="Evaluation Thumbnail">
+      </div>
       <div class="content">
         <p>Evaluation & Annotation</p>
         <a href="#">View</a>
       </div>
     </div>
     <div class="card">
-      <div class="thumbnail">Thumbnail 2</div>
+      <div class="thumbnail">
+        <img src="placeholder2.png" alt="Resume Thumbnail">
+      </div>
       <div class="content">
         <p>Resume</p>
         <a href="https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view" target="_blank">Open</a>
       </div>
     </div>
     <div class="card">
-      <div class="thumbnail">Thumbnail 3</div>
+      <div class="thumbnail">
+        <img src="placeholder3.png" alt="Certificate Thumbnail">
+      </div>
       <div class="content">
         <p>Certificate</p>
         <a href="#">Open</a>
       </div>
     </div>
     <div class="card">
-      <div class="thumbnail">Thumbnail 4</div>
+      <div class="thumbnail">
+        <img src="placeholder4.png" alt="Project Thumbnail">
+      </div>
       <div class="content">
         <p>Project</p>
         <a href="#">Open</a>
