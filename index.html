@@ -11,141 +11,152 @@ body {
     background-color: #111;
     color: #f5f5f5;
 }
-header {
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+h1 {
     text-align: center;
-    padding: 30px 20px;
-    background: rgba(30,30,30,0.9);
+    margin-bottom: 20px;
 }
-header h1 { font-size: 2.4rem; margin-bottom: 10px; }
-header p a { color: #f5f5f5; margin: 0 5px; text-decoration: none; background:#333; padding:6px 14px; border-radius:5px;}
-header p a:hover {background:#ff6b6b;}
-
-.container { max-width: 900px; margin:auto; padding:20px; display:flex; flex-direction:column; gap:20px; }
-
+.card-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
 .card {
+    flex: 0 0 280px;
     background: rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:16px;
-    padding:20px;
-    cursor:pointer;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
-    overflow:hidden;
-    position:relative;
+    overflow: hidden;
 }
-.card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.6);}
-.card h2 { border-bottom:2px solid #ff6b6b; padding-bottom:5px; margin-bottom:10px;}
-.card-content { display:none; margin-top:10px; }
-
-.card iframe { width:100%; height:250px; border-radius:12px; margin-bottom:10px;}
-.button { display:inline-block; background:#222; color:#f5f5f5; padding:8px 14px; border-radius:6px; text-decoration:none; margin-top:5px;}
-.button:hover { background:#ff6b6b;}
-canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1; border-radius:16px; }
-
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+}
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+.card-content {
+    display: none;
+    padding: 15px;
+}
+.card h3 {
+    margin: 15px 0 10px 0;
+    text-align: center;
+}
+.card p {
+    margin-bottom: 10px;
+}
+.card a.button {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #222;
+    color: #f5f5f5;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.card a.button:hover {
+    background: #ff6b6b;
+}
+iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    border: 2px solid #222;
+    margin-top: 10px;
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>Hillary Clarence Kusumo</h1>
-<p>
-<a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/" target="_blank">LinkedIn</a>
-<a href="mailto:hilarykusumo@example.com">Email</a>
-</p>
-</header>
+<h1>Hillary Kusumo | Portfolio</h1>
 
 <div class="container">
+    <div class="card-container">
+        <!-- Evaluation Card -->
+        <div class="card" onclick="toggleCard(this)">
+            <img src="https://i.ibb.co/0Vtp7S9/evaluation-thumbnail.png" alt="Evaluation Thumbnail">
+            <h3>Evaluation Work</h3>
+            <div class="card-content">
+                <h4>Modules</h4>
+                <ul>
+                    <li>Motion Analysis</li>
+                    <li>Audio Sync</li>
+                    <li>Composition Check</li>
+                    <li>Instruction Compliance</li>
+                </ul>
+                <h4>Case Studies</h4>
+                <p>Video 1: Ball disappears after hitting dome</p>
+                <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
+                <a href="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/view" target="_blank" class="button">Open Video 1</a>
+                <p>Video 2: Natural consistent break and audio</p>
+                <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
+                <a href="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view?usp=sharing" target="_blank" class="button">Open Video 2</a>
+                <h4>Rubric</h4>
+                <table>
+                    <tr><th>Criterion</th><th>Description</th><th>Scale</th></tr>
+                    <tr><td>Instruction</td><td>Follows prompt accurately</td><td>1–5</td></tr>
+                    <tr><td>Motion</td><td>Smoothness and consistency</td><td>1–5</td></tr>
+                    <tr><td>Audio</td><td>Alignment and clarity</td><td>1–5</td></tr>
+                    <tr><td>Composition</td><td>Framing and balance</td><td>1–5</td></tr>
+                </table>
+            </div>
+        </div>
 
-<!-- Card 1: Evaluation -->
-<div class="card" onclick="toggleCard(this)">
-<h2>1. Evaluation Work</h2>
-<div class="card-content">
-<p><strong>Modules:</strong> Image Review, Video Evaluation, Rubric Assessment</p>
-<p><strong>Case Studies:</strong></p>
-<ul>
-<li>Video 1: Ball disappears after hitting dome</li>
-<li>Video 2: Natural consistent break and audio</li>
-</ul>
-<p><strong>Rubric:</strong> Quality, Accuracy, Consistency</p>
-<p>Videos:</p>
-<iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
-</div>
-</div>
+        <!-- Annotation Card -->
+        <div class="card" onclick="toggleCard(this)">
+            <img src="https://i.ibb.co/Yc1fM7y/annotation-thumbnail.png" alt="Annotation Thumbnail">
+            <h3>Annotation Work</h3>
+            <div class="card-content">
+                <p><strong>Tool:</strong> CVAT</p>
+                <p><strong>Annotation Format:</strong> COCO JSON</p>
+                <p><strong>Objects Labeled:</strong> Cars, Traffic Signs, Pedestrians</p>
+                <p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints, LiDAR Cuboid</p>
+                <h4>Annotation Examples</h4>
+                <img src="Image%20Folder/0.png" alt="Screenshot 0">
+                <img src="Image%20Folder/1.png" alt="Screenshot 1">
+                <p><strong>Workflow Video</strong></p>
+                <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank" class="button">Watch Video</a>
+            </div>
+        </div>
 
-<!-- Card 2: Annotation -->
-<div class="card" onclick="toggleCard(this)">
-<h2>2. Annotation Work</h2>
-<div class="card-content">
-<p><strong>Tools:</strong> CVAT</p>
-<p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints, LiDAR Cuboid</p>
-<p><strong>Objects Labeled:</strong> Cars, Traffic Signs, Pedestrians</p>
-<iframe src="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/preview" frameborder="0" allowfullscreen></iframe>
-<canvas id="annotationCanvas"></canvas>
-</div>
-</div>
+        <!-- Resume Card -->
+        <div class="card" onclick="window.open('https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing','_blank')">
+            <img src="https://i.ibb.co/2nH2Y1r/resume-thumbnail.png" alt="Resume Thumbnail">
+            <h3>Resume</h3>
+            <p>Click to view/download my resume PDF.</p>
+            <a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="button">View Resume</a>
+        </div>
 
-<!-- Card 3: Resume -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing','_blank')">
-<h2>3. Resume</h2>
-<p>View or download my professional resume.</p>
-<a href="https://drive.google.com/file/d/1gRUr3Y4En71HGnATofre68AUSJkKgrbN/view?usp=sharing" target="_blank" class="button">View Resume</a>
+        <!-- Certificate Card -->
+        <div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing','_blank')">
+            <img src="https://i.ibb.co/X3H6T4f/certificate-thumbnail.png" alt="Certificate Thumbnail">
+            <h3>Micro 1 Certificate</h3>
+            <p>Certificate of Completion</p>
+            <a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button">View Certificate</a>
+        </div>
+    </div>
 </div>
-
-<!-- Card 4: Certificate -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing','_blank')">
-<h2>4. Micro 1 Certificate</h2>
-<p>Certificate of Completion</p>
-<a href="https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing" target="_blank" class="button">View Certificate</a>
-</div>
-
-</div>
-
-<footer style="text-align:center; padding:20px; background:rgba(30,30,30,0.9); color:#ccc;">
-<p>© 2026 Hillary Clarence Kusumo</p>
-</footer>
 
 <script>
-// Toggle card content visibility
-function toggleCard(card) {
+function toggleCard(card){
     const content = card.querySelector('.card-content');
-    if(content.style.display==='block'){ content.style.display='none';}
-    else{ content.style.display='block';}
-}
-
-// Annotation Canvas - LiDAR Cuboid Cars
-const annCanvas = document.getElementById('annotationCanvas');
-const annCtx = annCanvas?.getContext('2d');
-let aw = annCanvas?.width = annCanvas?.offsetWidth || 0;
-let ah = annCanvas?.height = annCanvas?.offsetHeight || 0;
-const cars = [];
-if(annCtx){
-    for(let i=0;i<6;i++){
-        cars.push({x:Math.random()*aw, y:ah-50-Math.random()*50, w:60, h:30, speed:1+Math.random()*2, color:'#ff6b6b'});
+    if(content.style.display === 'block'){
+        content.style.display = 'none';
+    } else {
+        content.style.display = 'block';
     }
-    const signs = [];
-    for(let i=0;i<4;i++){ signs.push({x:Math.random()*aw, y:ah-150-Math.random()*50, w:20, h:30}); }
-    function animateAnn(){
-        annCtx.clearRect(0,0,aw,ah);
-        annCtx.fillStyle='#222';
-        annCtx.fillRect(0,ah-100,aw,100);
-        cars.forEach(c=>{
-            c.x+=c.speed;
-            if(c.x>aw)c.x=-c.w;
-            annCtx.fillStyle=c.color;
-            annCtx.fillRect(c.x,c.y,c.w,c.h);
-            annCtx.strokeStyle='#fff';
-            annCtx.strokeRect(c.x,c.y,c.w,c.h);
-        });
-        signs.forEach(s=>{
-            annCtx.fillStyle='#27ae60';
-            annCtx.fillRect(s.x,s.y,s.w,s.h);
-            annCtx.strokeStyle='#fff';
-            annCtx.strokeRect(s.x,s.y,s.w,s.h);
-        });
-        requestAnimationFrame(animateAnn);
-    }
-    animateAnn();
-    window.addEventListener('resize',()=>{ aw=annCanvas.width=annCanvas.offsetWidth; ah=annCanvas.height=annCanvas.offsetHeight;});
 }
 </script>
 
