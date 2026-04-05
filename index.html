@@ -1,198 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hillary Kusumo | Annotation Portfolio/AI Trainer</title>
+<title>Hillary Clarence | Portfolio</title>
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
+    margin: 0; padding: 0; background-color: #111; color: #f5f5f5;
+    line-height: 1.6; overflow-x: hidden; position: relative;
 }
-
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+header {
+    background: rgba(30,30,30,0.9); text-align:center; padding:30px 20px; 
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
-
-h1 {
-    text-align: center;
-    color: #2c3e50;
+header h1 { font-size:2.4rem; margin-bottom:10px; letter-spacing:1px; }
+header p a {
+    color:#f5f5f5; background:#333; padding:6px 14px; border-radius:5px;
+    text-decoration:none; margin:0 5px; font-size:0.9rem;
 }
-
-h2 {
-    color: #34495e;
-    border-bottom: 2px solid #2980b9;
-    padding-bottom: 5px;
-}
-
-h3 {
-    color: #2980b9;
-}
-
-p, ul {
-    margin-bottom: 15px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-a {
-    color: #2980b9;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-img {
-    max-width: 100%;
-    display: block;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.contact-info p {
-    margin: 5px 0;
-}
-
-.button {
-    display:inline-block;
-    padding:10px 20px;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
-    margin-top:10px;
-}
-
-.button-blue { background-color:#2980b9; }
-.button-green { background-color:#27ae60; }
-
-.card {
-    flex: 1 1 250px;
-    background-color: #ecf0f1;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+header p a:hover { background:#ff6b6b; transform:scale(1.05); }
+.container { max-width:1200px; margin:auto; padding:30px 20px; display:flex; flex-wrap:wrap; gap:30px; justify-content:center; }
+.card { flex:1 1 400px; background: rgba(255,255,255,0.05); padding:25px; border-radius:16px; 
+       border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 20px rgba(0,0,0,0.5); 
+       cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; backdrop-filter: blur(8px); }
+.card:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.6); }
+.card h2 { color:#fff; margin-bottom:15px; border-bottom:2px solid #ff6b6b; padding-bottom:5px; }
+.card iframe { width:100%; height:350px; border-radius:12px; margin-top:15px; border:2px solid #222; transition:transform 0.3s; }
+.card iframe:hover { transform:scale(1.02); }
+.button { display:inline-block; background:#222; color:#f5f5f5; padding:8px 18px; margin-top:10px; border-radius:6px; text-decoration:none; transition: background 0.3s, transform 0.3s; font-weight:600; }
+.button:hover { background:#ff6b6b; transform:scale(1.05); }
+ul { margin-top:10px; padding-left:20px; }
+li { margin-bottom:10px; position:relative; padding-left:20px; color:#ddd; }
+li::before { content:'⚡'; position:absolute; left:0; color:#ff6b6b; }
+#networkCanvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index:-1; background:#111;
 }
 </style>
 </head>
-
 <body>
+
+<canvas id="networkCanvas"></canvas>
+
+<header>
+  <h1>Hillary Clarence</h1>
+  <p>
+    <a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/" target="_blank">LinkedIn</a>
+    <a href="mailto:hilary@example.com">Email</a>
+  </p>
+</header>
+
 <div class="container">
 
-<h1>Hillary Kusumo</h1>
-<p style="text-align:center; font-size: 1.1em; font-weight: bold;">
-Data Annotator | AI Trainer | Quality Analyst | Computer Vision & NLP | GEN AI | Content Evaluation | Bounding Box | Video Tagging
-</p>
-<p style="text-align:center; font-size: 1em;">AI Data Annotation Portfolio</p>
+<!-- Evaluation Card -->
+<div class="card" id="evaluationCard">
+  <h2>Evaluation Work</h2>
+  <p>This portfolio demonstrates structured evaluation of visual content. Covers images and videos using rubrics, modules, and guidelines.</p>
+  <h3>Case Studies</h3>
+  <p>Video 1</p>
+  <iframe src="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/preview" frameborder="0" allowfullscreen></iframe>
+  <a href="https://drive.google.com/file/d/1i-IoUP61f93RaRozoAb9a6pY-s_TgVnF/view" target="_blank" class="button">Open Video 1</a>
+  <p>Video 2</p>
+  <iframe src="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/preview" frameborder="0" allowfullscreen></iframe>
+  <a href="https://drive.google.com/file/d/18o8IdtSpkB44dpDWA7LtvDh8fy80RKyA/view?usp=sharing" target="_blank" class="button">Open Video 2</a>
 
-<div class="section">
-<h2>About Me</h2>
-<p>
-Data annotator with over 5 years of experience working on image, video, and text annotation projects.  
-Worked with companies such as Sama, CloudFactory, Remotask, Appen, and Micro 1.  
-Proficient in tools including CVAT, LabelImg, and custom annotation platforms.  
-Projects include autonomous driving video annotation, retail shelf labeling, agricultural drone footage segmentation, rodeo sports video annotation, and prompt reviewing for Micro 1.  
-Skilled in bounding boxes, polygon segmentation, keypoints, and quality assurance of annotated data.
-</p>
+  <h3>Evaluation Modules</h3>
+  <ul>
+    <li><strong>Motion Analysis:</strong> Detects movement inconsistencies and unnatural transitions.</li>
+    <li><strong>Audio Sync:</strong> Checks alignment and clarity of sound.</li>
+    <li><strong>Composition Check:</strong> Assesses visual framing and balance.</li>
+    <li><strong>Instruction Compliance:</strong> Confirms prompt adherence.</li>
+  </ul>
 </div>
 
-<div class="section">
-<h2>Project: Rodeo Video Annotation</h2>
+<!-- Annotation Card -->
+<div class="card" id="annotationCard">
+  <h2>Annotation Work</h2>
+  <p>Data annotation portfolio with over 5 years experience in image, video, and text labeling.</p>
+  
+  <h3>Rodeo Video Annotation</h3>
+  <p><strong>Tool:</strong> CVAT | <strong>Format:</strong> COCO JSON</p>
+  <p><strong>Objects Labeled:</strong> Rider, Horse, Bull, Barrel, Pickup Rider</p>
+  <p><strong>Annotation Types:</strong> Bounding Boxes, Keypoints</p>
+  
+  <h3>Annotation Examples</h3>
+  <img src="Image%20Folder/0.png" alt="Screenshot 0">
+  <img src="Image%20Folder/1.png" alt="Screenshot 1">
+  <img src="Image%20Folder/2.png" alt="Screenshot 2">
+  
+  <h3>Annotation Workflow Video</h3>
+  <a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank" class="button">Watch Workflow Video</a>
 
-<p><strong>Tool:</strong> CVAT</p>
-<p><strong>Annotation Format:</strong> COCO JSON</p>
-
-<p><strong>Objects Labeled:</strong></p>
-<ul>
-<li>Rider</li>
-<li>Horse</li>
-<li>Bull</li>
-<li>Barrel</li>
-<li>Pickup Rider</li>
-</ul>
-
-<p><strong>Annotation Types:</strong></p>
-<ul>
-<li>Bounding Boxes</li>
-<li>Keypoints</li>
-</ul>
-
-<p>
-Frames labeled from rodeo competition videos. Annotation includes rider pose keypoints and horse or bull body keypoints.
-</p>
-
-<h3>Annotation Examples</h3>
-
-<img src="Image%20Folder/0.png" alt="Screenshot 0">
-<img src="Image%20Folder/1.png" alt="Screenshot 1">
-<img src="Image%20Folder/2.png" alt="Screenshot 2">
-<img src="Image%20Folder/3.png" alt="Screenshot 3">
-<img src="Image%20Folder/4.png" alt="Screenshot 4">
-<img src="Image%20Folder/5.png" alt="Screenshot 5">
-<img src="Image%20Folder/6.png" alt="Screenshot 6">
-<img src="Image%20Folder/7.png" alt="Screenshot 7">
-<img src="Image%20Folder/8.png" alt="Screenshot 8">
-<img src="Image%20Folder/9.png" alt="Screenshot 9">
-
-<h3>Annotation Workflow Video</h3>
-<p>
-<a href="https://drive.google.com/file/d/1Zfp-vL_hNWhYFQ4pFO3-1P5grGw9KLBx/view" target="_blank">
-Watch the annotation explanation video
-</a>
-</p>
-</div>
-
-<div class="section">
-<h2>Resume & Certificates</h2>
-
-<div class="card-container">
-<!-- Resume Card -->
-<div class="card">
-<h3>Resume</h3>
-<p>Download my resume PDF.</p>
-<a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/Resume%20Hillary%20Clarence%20Kusumo.pdf" target="_blank" class="button button-blue">View Resume</a>
-</div>
-
-<!-- Certificate Card -->
-<div class="card">
-<h3>QA Certificate</h3>
-<p>Certificate of Completion, Oct 2022.</p>
-<a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/QA_Certificate%20of%20completion_Oct_2022-13%20(2).pdf" target="_blank" class="button button-green">View Certificate</a>
-</div>
-</div>
-</div>
-
-<div class="section contact-info">
-<h2>Contact</h2>
-<p>Name: Hillary Kusumo</p>
-<p>Phone: +254790931964</p>
-<p>LinkedIn: <a href="https://www.linkedin.com/in/hillary-kusumo-b66913178/" target="_blank">Hillary Kusumo</a></p>
+  <h3>Resume & Certificate</h3>
+  <a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/Resume%20Hillary%20Clarence%20Kusumo.pdf" target="_blank" class="button">View Resume</a>
+  <a href="https://github.com/hillaryclaro/annotation-portfolio/blob/main/QA_Certificate%20of%20completion_Oct_2022-13%20(2).pdf" target="_blank" class="button">View Certificate</a>
 </div>
 
 </div>
+
+<script>
+  // Network Canvas Animation
+  const canvas = document.getElementById('networkCanvas');
+  const ctx = canvas.getContext('2d');
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+  const nodes = [];
+  const nodeCount = 80;
+  function random(min,max){return Math.random()*(max-min)+min;}
+  for(let i=0;i<nodeCount;i++){nodes.push({x:random(0,width), y:random(0,height), vx:random(-0.5,0.5), vy:random(-0.5,0.5)});}
+  function animate(){
+    ctx.clearRect(0,0,width,height);
+    for(let i=0;i<nodeCount;i++){
+      for(let j=i+1;j<nodeCount;j++){
+        const dx=nodes[i].x-nodes[j].x;
+        const dy=nodes[i].y-nodes[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.strokeStyle='rgba(255,107,107,'+(1-dist/120)+')';
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n=>{
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>width) n.vx*=-1;
+      if(n.y<0||n.y>height) n.vy*=-1;
+      ctx.fillStyle='#ff6b6b';
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,2.5,0,Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+  window.addEventListener('resize',()=>{width=canvas.width=window.innerWidth;height=canvas.height=window.innerHeight;});
+</script>
+
 </body>
 </html>
