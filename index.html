@@ -3,293 +3,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hillary Kusumo Portfolio</title>
+<title>Portfolio</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: #fff;
-}
-.container {
-  height: 100vh;
-  padding: 20px;
-}
-.grid {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 20px;
-}
-.card {
-  background: #1e293b;
-  border-radius: 16px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  text-align: center;
-}
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-}
-.thumbnail {
-  height: 120px;
-  width: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-  position: relative;
-}
-.badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: #facc15;
-  color: black;
-  font-size: 0.9rem;
-  padding: 5px 8px;
-  border-radius: 50%;
-  font-weight: bold;
-}
-.eval { background: #38bdf8; }
-.annot { background: #22c55e; }
-.resume { background: #64748b; }
-.cert { background: #f43f5e; }
-h2 { margin: 0 0 10px 0; }
-p { color: #cbd5f5; line-height: 1.6; }
-.modal {
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(15,23,42,0.95);
-  z-index: 1000;
-}
-.modal-content {
-  height: 100%;
-  overflow-y: auto;
-  padding: 30px;
-}
-.close {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #38bdf8;
-  color: black;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0;
-  flex-wrap: wrap;
-}
-.tab {
-  padding: 10px;
-  background: #334155;
-  cursor: pointer;
-  border-radius: 6px;
-}
-.tab.active {
-  background: #38bdf8;
-  color: black;
-}
-.tab-content {
-  display: none;
-}
-.tab-content.active {
-  display: block;
-}
-.video-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-iframe, video {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-td, th {
-  border: 1px solid #334155;
-  padding: 10px;
-}
-th {
-  background: #334155;
-}
-.screenshot {
-  height: 200px;
-  background: #334155;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-}
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1e293b;
+    color: #fff;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background: #2e3b4e;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-align: center;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card h2 {
+    margin: 10px 0 5px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  .blue { background: #38bdf8; }
+  .green { background: #22c55e; }
+  .grey { background: #64748b; }
+  .red { background: #ef4444; }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    position: relative;
+    background: #1e293b;
+    margin: 40px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 12px;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #0ea5e9;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .tabs {
+    display: flex;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    background: #334155;
+    padding: 10px 15px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .tab.active {
+    background: #0ea5e9;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  video {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+
+  pre {
+    background: #334155;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+
+  th, td {
+    border: 1px solid #64748b;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background: #0ea5e9;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-<div class="grid">
+  <!-- Evaluation Card -->
+  <div class="card" onclick="openModal('evaluationModal')">
+    <div class="circle blue">🎬</div>
+    <h2>Evaluation</h2>
+    <p>Compare videos, review audio/visual quality, motion, realism, and score each aspect in detail.</p>
+  </div>
 
-<!-- Evaluation Card -->
-<div class="card" onclick="openModal('evaluationModal')">
-<div class="thumbnail eval">🎥<div class="badge">Best</div></div>
-<h2>Evaluation</h2>
-<p>Compare videos, review audio/visual quality, motion, realism, and score each aspect in detail.</p>
-</div>
+  <!-- Annotation Card -->
+  <div class="card" onclick="openModal('annotationModal')">
+    <div class="circle green">🖊️</div>
+    <h2>Annotation</h2>
+    <p>CVAT projects including bounding boxes, segmentation, and cuboids. Screenshots and labeling explanations included.</p>
+  </div>
 
-<!-- Annotation Card -->
-<div class="card" onclick="openModal('annotationModal')">
-<div class="thumbnail annot">🖊️</div>
-<h2>Annotation</h2>
-<p>CVAT projects including bounding boxes, segmentation, and cuboids. Includes screenshots and labeling explanations.</p>
-</div>
+  <!-- Resume Card -->
+  <div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view','_blank')">
+    <div class="circle grey">📄</div>
+    <h2>Resume</h2>
+    <p>Complete work experience and achievements in data annotation, QA, and AI-related projects.</p>
+  </div>
 
-<!-- Resume Card -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/view')">
-<div class="thumbnail resume">📄</div>
-<h2>Resume</h2>
-<p>Complete work experience and achievements in data annotation, QA, and AI-related projects.</p>
-</div>
-
-<!-- Certificates Card -->
-<div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4HyttNUr652OtC/view?usp=sharing')">
-<div class="thumbnail cert">🏆</div>
-<h2>Certificates</h2>
-<p>Training certificates and recognition for performance in annotation and AI projects.</p>
-</div>
-
-</div>
+  <!-- Certificates Card -->
+  <div class="card" onclick="window.open('https://drive.google.com/file/d/1jIfqd8ttvwceigDHtd4yttNUr652OtC/view','_blank')">
+    <div class="circle red">🏆</div>
+    <h2>Certificates</h2>
+    <p>Training certificates and recognition for performance in annotation and AI projects.</p>
+  </div>
 </div>
 
 <!-- Evaluation Modal -->
 <div id="evaluationModal" class="modal">
-<div class="close" onclick="closeModal('evaluationModal')">Close</div>
-<div class="modal-content">
-<h1>Video Evaluation</h1>
+  <div class="close" onclick="closeModal('evaluationModal')">Close</div>
+  <div class="modal-content">
+    <h1>Video Evaluation</h1>
+    <div class="tabs">
+      <div class="tab active" onclick="openTab(event,'videos')">Videos</div>
+      <div class="tab" onclick="openTab(event,'analysis')">Analysis</div>
+      <div class="tab" onclick="openTab(event,'scoring')">Scoring</div>
+      <div class="tab" onclick="openTab(event,'modules')">Guidelines</div>
+      <div class="tab" onclick="openTab(event,'result')">Result</div>
+    </div>
 
-<div class="tabs">
-<div class="tab active" onclick="openTab(event,'videos')">Videos</div>
-<div class="tab" onclick="openTab(event,'analysis')">Analysis</div>
-<div class="tab" onclick="openTab(event,'scoring')">Scoring</div>
-<div class="tab" onclick="openTab(event,'modules')">Guidelines</div>
-<div class="tab" onclick="openTab(event,'result')">Result</div>
-</div>
+    <div id="videos" class="tab-content active">
+      <div class="video-grid">
+        <video controls>
+          <source src="https://drive.google.com/uc?export=download&id=1U7mZLohpIS313wj7bwdaYo0znOFfQM5R" type="video/mp4">
+        </video>
+        <video controls>
+          <source src="https://drive.google.com/uc?export=download&id=1CjDk7jUuK7KH3Ulovd7SBPfKi8LXm5Is" type="video/mp4">
+        </video>
+      </div>
+      <p><strong>Video 1:</strong> Shows realistic globe break, synchronized audio, smooth motion, artifact-free visuals.</p>
+      <p><strong>Video 2:</strong> Visible artifacts, minor motion issues, audio inconsistencies. Globe break less realistic.</p>
+    </div>
 
-<div id="videos" class="tab-content active">
-<div class="video-grid">
-<video controls>
-<source src="https://drive.google.com/uc?export=download&id=1U7mZLohpIS313wj7bwdaYo0znOFfQM5R" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<video controls>
-<source src="https://drive.google.com/uc?export=download&id=1CjDk7jUuK7KH3Ulovd7SBPfKi8LXm5Is" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-</div>
-<p><strong>Video 1:</strong> Shows realistic motion when the globe breaks. Audio is synchronized with the motion. Visuals are stable and free from artifacts.</p>
-<p><strong>Video 2:</strong> Visible artifacts, slight motion inconsistencies, and audio desynchronization. Globe break looks less realistic.</p>
-</div>
+    <div id="analysis" class="tab-content">
+      <h2>Analysis</h2>
+      <ul>
+        <li><strong>Motion:</strong> Video 1 is smooth and natural. Video 2 has slight jitter and pauses.</li>
+        <li><strong>Audio:</strong> Video 1 is clear, synchronized. Video 2 has hiss, buzz, and desync.</li>
+        <li><strong>Visual Quality:</strong> Video 1 is artifact-free. Video 2 shows grain and minor distortions.</li>
+        <li><strong>Realism:</strong> Video 1 interactions are natural. Video 2 interactions appear less realistic.</li>
+      </ul>
+    </div>
 
-<div id="analysis" class="tab-content">
-<h2>Analysis</h2>
-<ul>
-<li><strong>Motion:</strong> Video 1 shows smooth object movement, proper physics, and logical interactions. Video 2 has minor jitter and unnatural pauses.</li>
-<li><strong>Audio:</strong> Video 1’s audio is clear, balanced, and aligned with motion. Video 2 shows intermittent noise, hiss, and minor desynchronization.</li>
-<li><strong>Visual Quality:</strong> Video 1 has no grain, thermal noise, or banding. Video 2 contains slight visual artifacts and distortions.</li>
-<li><strong>Realism:</strong> Video 1 provides natural object interaction, especially when the globe breaks. Video 2’s interactions are less realistic.</li>
-</ul>
-<p>Video 1 is superior due to consistent motion, realistic physics, synchronized audio, and artifact-free visuals.</p>
-</div>
+    <div id="scoring" class="tab-content">
+      <h2>Scoring</h2>
+      <table>
+        <tr><th>Criteria</th><th>Video 1</th><th>Video 2</th></tr>
+        <tr><td>Motion</td><td>9</td><td>6</td></tr>
+        <tr><td>Audio</td><td>9</td><td>6</td></tr>
+        <tr><td>Visual</td><td>9</td><td>7</td></tr>
+        <tr><td>Realism</td><td>9</td><td>6</td></tr>
+      </table>
+    </div>
 
-<div id="scoring" class="tab-content">
-<h2>Scoring</h2>
-<table>
-<tr><th>Criteria</th><th>Video 1</th><th>Video 2</th></tr>
-<tr><td>Motion</td><td>9</td><td>6</td></tr>
-<tr><td>Audio</td><td>9</td><td>6</td></tr>
-<tr><td>Visual</td><td>9</td><td>7</td></tr>
-<tr><td>Realism</td><td>9</td><td>6</td></tr>
-</table>
-</div>
-
-<div id="modules" class="tab-content">
-<h2>Guidelines</h2>
-<pre style="white-space: pre-wrap;">
+    <div id="modules" class="tab-content">
+      <h2>Guidelines</h2>
+      <pre style="white-space: pre-wrap;">
 Video Comparison Update Log
-
-- QN tasks with generation issues such as black screens or mismatched responses.
+- QN tasks with black screen or different responses.
 - Audio issues: hiss, buzz, clipping, ambient noise.
 - Visual issues: grain, thermal noise, read noise, amplification artifacts.
 - Penalize egregious deformities: unnatural limb/face movement or objects passing through humans.
-- Direct-reference videos (VA, VB, or both) to select the least noisy and most realistic.
-</pre>
-</div>
+- Select video with least audio/visual noise.
+      </pre>
+    </div>
 
-<div id="result" class="tab-content">
-<h2>Selected Video: Video 1</h2>
-<p>Video 1 is the best overall. Motion is realistic, globe break is natural, audio is synchronized, visuals are artifact-free. Video 2 has noticeable artifacts, minor motion inconsistencies, and audio issues.</p>
-</div>
-
-</div>
+    <div id="result" class="tab-content">
+      <h2>Selected Video: Video 1</h2>
+      <p>Video 1 is best. Motion is realistic, globe break looks natural, audio synchronized, visuals artifact-free. Video 2 has artifacts and minor desync issues.</p>
+    </div>
+  </div>
 </div>
 
 <!-- Annotation Modal -->
 <div id="annotationModal" class="modal">
-<div class="close" onclick="closeModal('annotationModal')">Close</div>
-<div class="modal-content">
-<h1>Annotation Work</h1>
-<p>This section contains projects showing detailed CVAT annotation tasks including bounding boxes, segmentation, and cuboids.</p>
-<h2>Examples</h2>
-<div class="screenshot">CVAT Screenshot Example 1: Bounding boxes</div>
-<div class="screenshot">CVAT Screenshot Example 2: Segmentation polygon</div>
-<div class="screenshot">CVAT Screenshot Example 3: Cuboid labeling</div>
-<p>Each example demonstrates careful object selection, accurate labeling, and consistent annotations across frames to train AI models effectively.</p>
-</div>
+  <div class="close" onclick="closeModal('annotationModal')">Close</div>
+  <div class="modal-content">
+    <h1>Annotation Projects</h1>
+    <div class="tabs">
+      <div class="tab active" onclick="openTab(event,'cvat')">CVAT Projects</div>
+      <div class="tab" onclick="openTab(event,'cuboids')">Cuboids</div>
+      <div class="tab" onclick="openTab(event,'examples')">Examples</div>
+    </div>
+
+    <div id="cvat" class="tab-content active">
+      <h2>CVAT Projects</h2>
+      <p>Bounding boxes, segmentation, keypoints, and labeling projects. Screenshots with detailed explanations included.</p>
+    </div>
+
+    <div id="cuboids" class="tab-content">
+      <h2>Cuboids</h2>
+      <p>3D object annotation with cuboid labels for autonomous driving and drone footage.</p>
+    </div>
+
+    <div id="examples" class="tab-content">
+      <h2>Examples</h2>
+      <p>Screenshots of annotated images, videos, and segmentation masks with notes explaining labeling decisions.</p>
+    </div>
+  </div>
 </div>
 
 <script>
-function openModal(id){
-  document.getElementById(id).style.display='block';
-  // Make first tab active in evaluation modal
-  if(id === 'evaluationModal'){
-    let tabs = document.querySelectorAll('#evaluationModal .tab');
-    let contents = document.querySelectorAll('#evaluationModal .tab-content');
-    tabs.forEach(t => t.classList.remove('active'));
-    contents.forEach(c => c.classList.remove('active'));
-    if(tabs[0]) tabs[0].classList.add('active');
-    if(contents[0]) contents[0].classList.add('active');
-  }
+function openModal(id) {
+  document.getElementById(id).style.display = 'block';
 }
-function closeModal(id){document.getElementById(id).style.display='none';}
-function openTab(evt, name){
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+function openTab(evt, tabName) {
   let modal = evt.currentTarget.closest('.modal');
+  let tabContents = modal.querySelectorAll('.tab-content');
+  tabContents.forEach(tc => tc.classList.remove('active'));
   let tabs = modal.querySelectorAll('.tab');
-  let contents = modal.querySelectorAll('.tab-content');
   tabs.forEach(t => t.classList.remove('active'));
-  contents.forEach(c => c.classList.remove('active'));
+  modal.querySelector('#'+tabName).classList.add('active');
   evt.currentTarget.classList.add('active');
-  document.getElementById(name).classList.add('active');
 }
 </script>
 
