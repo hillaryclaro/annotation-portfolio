@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Hillary Kusumo</title>
+
 <style>
   body {
     font-family: Arial, sans-serif;
     font-size: 18px;
     margin: 0;
-    color: #eee;
+    color: #ddd;
     overflow-x: hidden;
     position: relative;
+    background-color: #0d0d0d;
   }
 
   #background {
@@ -19,17 +21,19 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     z-index: -2;
-    background-color: #111;
+    background-color: #0d0d0d;
   }
 
   header {
-    background-color: rgba(34,34,34,0.9);
+    background-color: rgba(15,15,15,0.95);
     padding: 20px;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
     position: relative;
     z-index: 1;
+    border-bottom: 1px solid #2a2a2a;
+    letter-spacing: 1px;
   }
 
   .grid-container {
@@ -42,24 +46,40 @@
   }
 
   .card {
-    background-color: rgba(26,26,26,0.9);
+    background: rgba(30,30,30,0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
   }
 
-  .card:hover { transform: scale(1.05); }
-  .card h3 { margin-top: 0; font-size: 1.5em; }
+  .card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+    background: rgba(40,40,40,0.75);
+  }
+
+  .card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #eee;
+  }
+
   .thumbnail {
-    width: 100%; height: 150px;
-    background-color: #333;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(145deg,#2a2a2a,#1a1a1a);
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #aaa;
+    color: #999;
     font-size: 1.2em;
+    border-radius: 8px;
   }
 
   .modal {
@@ -67,24 +87,39 @@
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal.show {
+    display: flex;
+    opacity: 1;
   }
 
   .modal-content {
-    background-color: #222;
+    background: rgba(25,25,25,0.95);
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 80%;
     max-height: 80%;
     overflow-y: auto;
     font-size: 20px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 
   .close-btn {
-    background-color: #ff4444;
+    background-color: #333;
     border: none;
     padding: 10px 20px;
     color: #fff;
@@ -92,12 +127,32 @@
     border-radius: 5px;
     cursor: pointer;
     float: right;
+    transition: background 0.2s;
   }
 
-  iframe { width: 100%; height: 400px; border: none; margin-bottom: 20px; }
+  .close-btn:hover {
+    background-color: #555;
+  }
 
-  h2 { font-size: 2em; margin-bottom: 10px; }
-  p { font-size: 1.2em; line-height: 1.5; }
+  iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #ccc;
+  }
 
   .tabs {
     display: flex;
@@ -106,32 +161,30 @@
   }
 
   .tab {
-    background-color: #333;
+    background-color: #2a2a2a;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: box-shadow 0.3s, background-color 0.3s;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+    color: #bbb;
   }
 
-  .tab:hover { background-color: #444; }
+  .tab:hover {
+    background-color: #3a3a3a;
+    color: #fff;
+  }
 
-  /* Active tab with pulsing glow */
   .tab.active {
     background-color: #555;
-    animation: glowPulse 1.5s infinite alternate;
-  }
-
-  @keyframes glowPulse {
-    0% { box-shadow: 0 0 5px #66ccff; }
-    50% { box-shadow: 0 0 20px #66ccff; }
-    100% { box-shadow: 0 0 5px #66ccff; }
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.15);
   }
 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
-
 </style>
 </head>
+
 <body>
 
 <canvas id="background"></canvas>
@@ -215,8 +268,16 @@
 </div>
 
 <script>
-function openModal(id){document.getElementById(id).style.display='flex';}
-function closeModal(id){document.getElementById(id).style.display='none';}
+function openModal(id){
+  const modal = document.getElementById(id);
+  modal.classList.add('show');
+}
+
+function closeModal(id){
+  const modal = document.getElementById(id);
+  modal.classList.remove('show');
+}
+
 function openTab(evt,tabName){
   const tabContents=document.getElementsByClassName('tab-content');
   for(let i=0;i<tabContents.length;i++) tabContents[i].classList.remove('active');
@@ -226,7 +287,6 @@ function openTab(evt,tabName){
   evt.currentTarget.classList.add('active');
 }
 
-// Network nodes + cuboids background
 const canvas=document.getElementById('background');
 const ctx=canvas.getContext('2d');
 let nodes=[],cuboids=[];
@@ -236,13 +296,78 @@ function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.inne
 window.addEventListener('resize',resizeCanvas);
 resizeCanvas();
 
-class Node{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-0.5)*0.5;this.vy=(Math.random()-0.5)*0.5;this.radius=2+Math.random()*3;}move(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width)this.vx*=-1;if(this.y<0||this.y>canvas.height)this.vy*=-1;}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle='#66ccff';ctx.fill();}}
+class Node{
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.vx=(Math.random()-0.5)*0.5;
+    this.vy=(Math.random()-0.5)*0.5;
+    this.radius=2+Math.random()*3;
+  }
+  move(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    if(this.x<0||this.x>canvas.width)this.vx*=-1;
+    if(this.y<0||this.y>canvas.height)this.vy*=-1;
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+    ctx.fillStyle='#888';
+    ctx.fill();
+  }
+}
 
-class Cuboid{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.z=Math.random()*200;this.size=10+Math.random()*20;this.vx=(Math.random()-0.5)*0.2;this.vy=(Math.random()-0.5)*0.2;this.vz=(Math.random()-0.5)*0.2;}move(){this.x+=this.vx;this.y+=this.vy;this.z+=this.vz;if(this.x<0||this.x>canvas.width)this.vx*=-1;if(this.y<0||this.y>canvas.height)this.vy*=-1;if(this.z<0||this.z>200)this.vz*=-1;}draw(){const shade=100+this.z/2;ctx.fillStyle=`rgba(${shade},${shade},255,0.7)`;ctx.fillRect(this.x,this.y,this.size,this.size);}}
+class Cuboid{
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.z=Math.random()*200;
+    this.size=10+Math.random()*20;
+    this.vx=(Math.random()-0.5)*0.2;
+    this.vy=(Math.random()-0.5)*0.2;
+    this.vz=(Math.random()-0.5)*0.2;
+  }
+  move(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    this.z+=this.vz;
+    if(this.x<0||this.x>canvas.width)this.vx*=-1;
+    if(this.y<0||this.y>canvas.height)this.vy*=-1;
+    if(this.z<0||this.z>200)this.vz*=-1;
+  }
+  draw(){
+    const shade=120+this.z/3;
+    ctx.fillStyle=`rgba(${shade},${shade},${shade},0.6)`;
+    ctx.fillRect(this.x,this.y,this.size,this.size);
+  }
+}
 
-function connectNodes(){for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x;const dy=nodes[i].y-nodes[j].y;const dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle='rgba(102,204,255,'+(1-dist/150)+')';ctx.lineWidth=1;ctx.stroke();}}}}
+function connectNodes(){
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x;
+      const dy=nodes[i].y-nodes[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<150){
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle='rgba(200,200,200,'+(1-dist/150)+')';
+        ctx.lineWidth=1;
+        ctx.stroke();
+      }
+    }
+  }
+}
 
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);nodes.forEach(n=>{n.move();n.draw();});connectNodes();cuboids.forEach(c=>{c.move();c.draw();});requestAnimationFrame(animate);}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  nodes.forEach(n=>{n.move();n.draw();});
+  connectNodes();
+  cuboids.forEach(c=>{c.move();c.draw();});
+  requestAnimationFrame(animate);
+}
 
 for(let i=0;i<nodeCount;i++) nodes.push(new Node());
 for(let i=0;i<cuboidCount;i++) cuboids.push(new Cuboid());
