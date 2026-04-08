@@ -13,15 +13,23 @@ body {
   color: #e0e0e0;
 }
 
+/* Remove all link styles globally */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Force button look */
+button {
+  text-decoration: none;
+  outline: none;
+}
+
 header {
   text-align: center;
   padding: 30px;
   border-bottom: 1px solid #222;
   background: #111;
-}
-
-header h1 {
-  margin: 0;
 }
 
 .container {
@@ -53,10 +61,6 @@ header h1 {
   height: 180px;
   border-radius: 10px;
   background: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
   margin-bottom: 15px;
   overflow: hidden;
 }
@@ -86,7 +90,6 @@ h3 {
   color: #fff;
   cursor: pointer;
   font-size: 14px;
-  text-align: center;
   transition: 0.2s;
 }
 
@@ -95,10 +98,11 @@ h3 {
 }
 
 .button.secondary {
-  background: #1f1f1f;
+  background: #1a1a1a;
   border: 1px solid #333;
 }
 
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -159,10 +163,12 @@ iframe {
       </div>
       <h3>Resume</h3>
       <div class="btn-group">
-        <button class="button" onclick="openPreview('resumeModal','https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/preview')">
+        <button class="button"
+          onclick="openPreview('resumeModal','https://drive.google.com/file/d/1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i/preview')">
           View
         </button>
-        <button class="button secondary" onclick="downloadFile('https://drive.google.com/uc?export=download&id=1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i')">
+        <button class="button secondary"
+          onclick="downloadFile('https://drive.google.com/uc?export=download&id=1kvNxCSGXsWik5_sMzrUKhOgxW9Nhqt4i')">
           Download
         </button>
       </div>
@@ -175,29 +181,15 @@ iframe {
       </div>
       <h3>Certificate</h3>
       <div class="btn-group">
-        <button class="button" onclick="openPreview('certModal','YOUR_CERT_LINK_HERE')">
+        <button class="button"
+          onclick="openPreview('certModal','YOUR_CERT_LINK_HERE')">
           View
         </button>
-        <button class="button secondary" onclick="downloadFile('YOUR_CERT_DOWNLOAD_LINK')">
+        <button class="button secondary"
+          onclick="downloadFile('YOUR_CERT_DOWNLOAD_LINK')">
           Download
         </button>
       </div>
-    </div>
-
-    <!-- Annotation -->
-    <div class="card">
-      <div class="thumbnail">
-        Annotation Project
-      </div>
-      <h3>Annotation Project</h3>
-    </div>
-
-    <!-- Evaluation -->
-    <div class="card">
-      <div class="thumbnail">
-        Video & Image Evaluation
-      </div>
-      <h3>Video & Image Evaluation</h3>
     </div>
 
   </div>
